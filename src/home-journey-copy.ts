@@ -8,3 +8,8 @@ export const homeWorkflow=defineCopy('home-workflow',{
  en:{title:'How I work with AI',body:'I use Codex to analyse existing code, implement changes and prepare tests. I have worked with AI tools for over three years, including around two years with Codex.',checks:'We agree the scope and acceptance criteria before work starts. I review the changes, test the result and hand over the code with clear instructions.'},
  pl:{title:'Jak pracuję z AI',body:'Używam Codex do analizy istniejącego kodu, wprowadzania zmian i przygotowywania testów. Z narzędzi AI korzystam od ponad trzech lat, w tym z Codex od około dwóch lat.',checks:'Przed rozpoczęciem uzgadniamy zakres i kryteria odbioru. Sprawdzam zmiany, testuję wynik i przekazuję kod z jasnymi instrukcjami.'}
 });
+
+export const homeGithub=defineCopy('home-github',{
+ en:{title:'See the code behind the work',body:'Inspect the implementation, tests and setup instructions. The CRM case shows a focused change to an existing application.',source:'Portfolio source code',crm:'Atomic CRM — contact import review',boundary:'Independent examples with test data. Atomic CRM is by Marmelab; the case study identifies my extension and its limits.',profile:'My GitHub profile'},
+ pl:{title:'Zobacz kod i sposób wykonania',body:'Sprawdź implementację, testy i instrukcje uruchomienia. Przykład CRM pokazuje konkretną zmianę w istniejącej aplikacji.',source:'Kod źródłowy portfolio',crm:'Atomic CRM — kontrola importu kontaktów',boundary:'Niezależne przykłady z danymi testowymi. Atomic CRM jest projektem Marmelab; opis wskazuje mój wkład i jego ograniczenia.',profile:'Mój profil GitHub'}
+});

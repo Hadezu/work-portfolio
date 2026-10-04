@@ -1,5 +1,5 @@
 import Hero3D from './Hero3D';
-import {useRef} from 'react';
+import {useRef,type PointerEvent} from 'react';
 import {useEditorialMotion} from './useEditorialMotion';
 import {editorialCopy} from './editorial-copy';
 import TaskFit,{CollaborationTerms} from './TaskFit';
@@ -8,7 +8,7 @@ import {ContactForm} from './ContactPage';
 import {Link} from 'react-router-dom';
 import {useLocale,localizedPath} from './locale';
 import {homeCopy} from './home-copy';
-import {homeJourney,homeWorkflow} from './home-journey-copy';
+import {homeJourney,homeWorkflow,homeGithub} from './home-journey-copy';
 import {PracticalLinks} from './PracticalResources';
 import {ServiceLinks} from './ServiceLinks';
 import './portfolio.css';
@@ -19,7 +19,8 @@ import './editorial-refinement.css';
 import './home-harmony.css';
 export default function PortfolioHome(){
  const root=useRef<HTMLElement>(null),motion=useEditorialMotion(root);
- const locale=useLocale(),c=homeCopy[locale],j=homeJourney[locale],e=editorialCopy[locale],workflow=homeWorkflow[locale];
+ const portraitLight=(event:PointerEvent<HTMLElement>)=>{if(!motion.available||motion.paused||event.pointerType==='touch'||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;const el=event.currentTarget,box=el.getBoundingClientRect();el.style.setProperty('--portrait-light-x',`${event.clientX-box.left}px`);el.style.setProperty('--portrait-light-y',`${event.clientY-box.top}px`);};
+ const locale=useLocale(),c=homeCopy[locale],j=homeJourney[locale],e=editorialCopy[locale],workflow=homeWorkflow[locale],github=homeGithub[locale];
  return <main ref={root} className="portfolio-home" data-motion={motion.available&&!motion.paused?'on':'off'}>
   <section className="section portfolio-hero"><div className="shell hero-inner"><div className="home-hero-copy">
    <p className="kicker">Ivan Matiushkin · {c.hero.role}</p>
@@ -31,7 +32,9 @@ export default function PortfolioHome(){
   <section className="section home-start" id={c.ids.work}><div className="shell"><p className="editorial-index">{e.process}</p><h2>{j.start}</h2><ol>{j.steps.map(([title,body])=><li key={title}><h3>{title}</h3><p>{body}</p></li>)}</ol>
    <aside className="home-ai-workflow" aria-labelledby="ai-workflow-title"><div><span className="workflow-tool">Codex</span><h3 id="ai-workflow-title">{workflow.title}</h3></div><div><p>{workflow.body}</p><p>{workflow.checks}</p></div></aside>
    <p className="contact-notice">{j.reviewLimit}</p></div></section>
-  <section className="shell section contractor-facts" id="contractor"><figure className="about-portrait"><img src="/editorial/ivan-portrait.jpg" width="960" height="1280" alt={e.portrait} loading="lazy"/><figcaption>Ivan Matiushkin <span>{e.location}</span></figcaption></figure><div className="about-copy"><p className="editorial-index">{e.about}</p><h2>{j.about}</h2><p>{j.bio}</p><CollaborationTerms/><details><summary>{j.terms}</summary><p>{j.billing}</p></details><details className="home-resources"><summary>{j.technical}</summary><Link to={localizedPath('/automation',locale)}>{j.more} →</Link><ServiceLinks/><PracticalLinks/></details></div></section>
+  <section className="shell section contractor-facts" id="contractor"><figure className="about-portrait" onPointerMove={portraitLight}><div className="portrait-frame"><img src="/editorial/ivan-portrait.jpg" width="960" height="1280" alt={e.portrait} loading="lazy"/></div><figcaption>Ivan Matiushkin <span>{e.location}</span></figcaption></figure><div className="about-copy"><p className="editorial-index">{e.about}</p><h2>{j.about}</h2><p>{j.bio}</p>
+   <aside className="home-github" aria-labelledby="github-proof-title"><h3 id="github-proof-title">{github.title}</h3><p>{github.body}</p><ul><li><a href="https://github.com/Hadezu/work-portfolio">{github.source} <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/Hadezu/atomic-crm-import-review/blob/main/CASE-STUDY.md">{github.crm} <span aria-hidden="true">↗</span></a></li></ul><p className="github-boundary">{github.boundary}</p><a className="github-profile" href="https://github.com/Hadezu">{github.profile} <span aria-hidden="true">↗</span></a></aside>
+   <CollaborationTerms/><details><summary>{j.terms}</summary><p>{j.billing}</p></details><details className="home-resources"><summary>{j.technical}</summary><Link to={localizedPath('/automation',locale)}>{j.more} →</Link><ServiceLinks/><PracticalLinks/></details></div></section>
   <ContactForm embedded/>
  </main>;
 }

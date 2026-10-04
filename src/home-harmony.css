@@ -58,6 +58,24 @@ body:has(.portfolio-home) .site-navigation :is(.site-nav-footer,.site-nav-hint){
 @media(max-width:700px){.portfolio-home.portfolio-home .about-portrait{padding:7px;box-sizing:border-box}}
 .portfolio-home.portfolio-home .task-evidence .button.secondary{background:transparent;color:#173c3b;border:0;border-bottom:1px solid #844a32;border-radius:0}
 .portfolio-home.portfolio-home .about-copy a{color:#844a32;text-underline-offset:4px}
+.portfolio-home .home-github{border-top:1px solid #bac8bd;border-bottom:1px solid #bac8bd;padding:22px 0;margin-top:26px}
+.portfolio-home .home-github h3{font-size:23px;line-height:1.3;margin:0 0 12px;font-weight:500}
+.portfolio-home .home-github p{font-size:14px;line-height:1.75;color:#435b50;margin:0 0 12px}
+.portfolio-home .home-github ul{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
+.portfolio-home .home-github a{font-size:14px;line-height:1.6}
+.portfolio-home .home-github .github-boundary{font-size:12px;margin-bottom:14px}
+.portfolio-home .home-github a:focus-visible{outline:2px solid #844a32;outline-offset:5px}
+.portfolio-home .portrait-frame{overflow:hidden}
+.portfolio-home .about-portrait{position:relative;isolation:isolate}
+.portfolio-home .about-portrait::after{content:'';position:absolute;inset:0;padding:2px;pointer-events:none;opacity:0;background:radial-gradient(180px circle at var(--portrait-light-x,50%) var(--portrait-light-y,35%),#d8a879cc,transparent 75%);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .portfolio-home[data-motion=on] .about-portrait::after{transition:opacity .35s ease}
+ .portfolio-home[data-motion=on] .about-portrait:hover::after{opacity:1}
+ .portfolio-home[data-motion=on] .about-portrait{transition:box-shadow .5s ease}
+ .portfolio-home[data-motion=on] .portrait-frame img{transition:transform .65s cubic-bezier(.2,.65,.3,1);transform-origin:50% 35%}
+ .portfolio-home[data-motion=on] .about-portrait:hover{box-shadow:0 12px 28px -18px #173c3b66}
+ .portfolio-home[data-motion=on] .about-portrait:hover img{transform:scale(1.025)}
+}
 body:has(.portfolio-home) .trust-block{background:#f3f4ef;color:#4d6059}
 body:has(.portfolio-home) .trust-block div{color:#20302d}
 /* Balanced insets for the problem index and its now-filled evidence surface. */
