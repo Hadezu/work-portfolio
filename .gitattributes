@@ -1,4 +1,6 @@
 * text=auto eol=lf
+# This published fixture is byte-checked against the generated CRLF CSV.
+public/samples/synthetic-orders.csv -text
 *.png binary
 *.jpg binary
 *.webp binary
