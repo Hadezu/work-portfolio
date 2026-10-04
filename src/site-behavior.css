@@ -1,0 +1,40 @@
+/* Deferred presentation layer. Existing content and truthful statuses work without it. */
+body{--motion-micro:180ms;--motion-settle:240ms;--motion-reveal:650ms;--motion-ease:cubic-bezier(.22,1,.36,1)}
+body footer{flex-wrap:wrap;gap:20px 32px}
+.site-motion-toggle{font-size:12px;min-height:36px}
+.language-switch{position:relative;isolation:isolate;display:inline-grid;grid-template-columns:1fr 1fr;gap:0!important;padding:2px!important;--pill:#163a5f}
+.site-header--editorial .language-switch{--pill:#d4dfe4}
+.language-switch:before{content:'';position:absolute;z-index:-1;left:2px;top:2px;bottom:2px;width:calc(50% - 2px);border-radius:999px;background:var(--pill);pointer-events:none}
+.language-switch:has(a:last-child[aria-current=true]):before{transform:translateX(100%)}
+.site-header .language-switch a[aria-current=true]{background:transparent!important}
+body .site-header a[aria-current=location]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.portfolio-home :is(.proof-media,.home-start,.about-copy,.editorial-contact){position:relative}
+.portfolio-home :is(.proof-media,.home-start,.about-copy,.editorial-contact):after,footer:after{content:'';display:block;height:1px;position:absolute;bottom:0;left:0;width:100%;background:currentColor;opacity:.25;transform:scaleX(.2);transform-origin:left;pointer-events:none}
+footer{position:relative}
+.portfolio-home [data-entered=true]:after,.portfolio-home [data-entered=true] .proof-media:after,.portfolio-home [data-entered=true] .about-copy:after,footer[data-entered=true]:after{transform:scaleX(1)}
+.portfolio-home .proof-feature:has(:focus-visible) .proof-media,.portfolio-home .proof-feature:hover .proof-media{border-color:#7099ae}
+.contact-page[data-state=error] .contact-form{outline:2px solid #9a4334;outline-offset:6px}
+.contact-page .contact-status:before{content:'';display:block;border-top:2px solid currentColor;margin-bottom:16px;transform-origin:left}
+
+@media(prefers-reduced-motion:no-preference){
+ body[data-behavior=on] :is(button,a,input,textarea,select,summary){transition:color var(--motion-micro),border-color var(--motion-micro),background-color var(--motion-micro),text-underline-offset var(--motion-micro),transform var(--motion-micro)!important}
+ body[data-behavior=on] :is(button,.button):active:not(:disabled){transform:translateY(1px);transition-duration:80ms!important}
+ body[data-behavior=on] :is(a,summary):focus-visible{outline-offset:4px}
+ body[data-behavior=on] main :is(input,textarea,select):focus{border-color:#365e73;outline-offset:3px}
+ body[data-behavior=on] .language-switch:before{transition:transform 220ms cubic-bezier(.65,0,.35,1)!important}
+ body[data-behavior=on] :is(.proof-media,.home-start,.about-copy,.editorial-contact,footer):after{transition:transform var(--motion-reveal) var(--motion-ease)!important}
+ body[data-behavior=on] .task-options button:after{transition:transform var(--motion-micro),opacity var(--motion-micro)!important}
+ body[data-behavior=on] .task-options button:is(:focus-visible,[aria-pressed=true]):after{transform:translateX(-4px)}
+ body[data-behavior=on] .site-navigation[open]{animation:panel-settle 240ms var(--motion-ease)!important}
+ body[data-behavior=on] .contact-status,body[data-behavior=on] .contact-form [role=alert]{animation:message-settle 220ms var(--motion-ease)!important}
+ body[data-behavior=on] .contact-status:before{animation:receipt-rule 360ms var(--motion-ease)!important}
+ @media(hover:hover) and (pointer:fine){
+  body[data-behavior=on] :is(.proof-feature,.compact-proofs article):hover a{ text-underline-offset:6px }
+  body[data-behavior=on] :is(.site-header,footer) a:hover{ text-decoration:underline;text-underline-offset:5px }
+  body[data-behavior=on] tbody tr:has(a,button):hover{outline:1px solid #8da4ae;outline-offset:-1px}
+  body[data-behavior=on] summary:hover{ text-decoration:underline;text-underline-offset:4px }
+ }
+}
+@keyframes panel-settle{from{opacity:.95;translate:0 -4px}to{opacity:1;translate:0 0}}
+@keyframes message-settle{from{opacity:.9;translate:0 3px}to{opacity:1;translate:0 0}}
+@keyframes receipt-rule{from{transform:scaleX(.2)}to{transform:scaleX(1)}}

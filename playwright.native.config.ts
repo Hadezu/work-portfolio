@@ -1,0 +1,2 @@
+import {defineConfig,devices} from '@playwright/test';
+export default defineConfig({testDir:'./tests/e2e',testMatch:['public-source.spec.ts','migration.spec.ts'],timeout:30000,use:{baseURL:'http://127.0.0.1:4174',trace:'retain-on-failure'},webServer:{command:'npm run dev -- --host 127.0.0.1 --port 4174',env:{VITE_LAB_RUNTIME:'native'},url:'http://127.0.0.1:4174',reuseExistingServer:false},projects:[{name:'chromium-native',use:{...devices['Desktop Chrome']}}]});

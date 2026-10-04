@@ -1,0 +1,4 @@
+import {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
+export function track(event:'page_view'|'contact_click'|'form_view'|'form_start'|'form_error',path:string){if(navigator.doNotTrack==='1')return;void fetch('/api/metrics',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({event,path}),keepalive:true}).catch(()=>{});}
+export default function SiteMetrics(){const {pathname}=useLocation();useEffect(()=>{track('page_view',pathname);const click=(event:MouseEvent)=>{const target=event.target instanceof Element?event.target.closest('a'):null;const href=target?.getAttribute('href')??'';if(href==='#send-task'||href.startsWith('mailto:')||/^\/(?:en\/)?contact(?:\?|$)/.test(href))track('contact_click',pathname);};document.addEventListener('click',click,true);return()=>document.removeEventListener('click',click,true);},[pathname]);return null;}

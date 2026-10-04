@@ -1,0 +1,40 @@
+{
+  "name": "ivan-matiushkin-proof-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/local.mjs vite --host 127.0.0.1",
+    "setup:local": "node scripts/local.mjs wrangler d1 migrations apply portfolio-local --local",
+    "cf-types": "node scripts/local.mjs wrangler types && node scripts/local.mjs wrangler types --config wrangler.reference.jsonc --env-interface ReferenceEnv --include-runtime false worker-reference.d.ts",
+    "build": "npm run cf-types && tsc -b && node scripts/local.mjs vite build",
+    "test": "vitest run",
+    "test:e2e": "playwright test --config playwright.native.config.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "6.1.1",
+    "gtfs-realtime-bindings": "2.2.0",
+    "papaparse": "5.7.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4",
+    "saxes": "6.0.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.54.10",
+    "@cloudflare/workers-types": "5.20260916.1",
+    "@playwright/test": "1.63.0",
+    "@types/papaparse": "5.5.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.180.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "5.0.1",
+    "wrangler": "4.132.0"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  }
+}

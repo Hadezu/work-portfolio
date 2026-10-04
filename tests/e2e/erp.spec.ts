@@ -1,0 +1,30 @@
+import {expect,test} from '@playwright/test';
+test('ERP baseline, controlled mapping failure, evidence, SQL recovery, reconciliation and exports',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto('/erp-sync');await page.reload();
+  await expect(page.getByRole('heading',{name:'Synchronizacja i walidacja danych między systemami',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Uruchom pakiet referencyjny',exact:true}).click();
+  await expect(page.getByTestId('erp-overall')).toHaveText('PASS');await expect(page.getByTestId('erp-row')).toHaveCount(16);
+  await expect(page.getByTestId('erp-row').filter({hasText:'version.stale'})).toContainText('stale_update');
+  await page.getByRole('button',{name:'Wprowadź kontrolowaną rozbieżność'}).click();
+  await expect(page.getByTestId('erp-overall')).toHaveText('FAIL');await expect(page.getByTestId('erp-row')).toHaveCount(1);
+  await expect(page.getByTestId('erp-mode')).toContainText('SKU-X99 → B-P99');
+  await page.getByRole('button',{name:'Dowód',exact:true}).click();await expect(page.getByRole('dialog')).toContainText('mapping.ord104');await expect(page.getByRole('dialog')).toContainText('SKU-X99');await page.keyboard.press('Escape');
+  await page.getByLabel('Wynik testu',{exact:true}).selectOption('PASS');await expect(page.getByTestId('erp-row')).toHaveCount(15);
+  await page.getByLabel('Typ reguły').selectOption('version');await expect(page.getByTestId('erp-row')).toHaveCount(2);
+  await page.getByLabel('Szukaj scenariusza').fill('not-present');await expect(page.getByTestId('erp-row')).toHaveCount(0);
+  await page.getByRole('button',{name:'Mapowanie',exact:true}).click();await expect(page.getByRole('cell',{name:'BRAK MAPOWANIA — kontrolowana zmiana'})).toBeVisible();
+  await page.getByRole('button',{name:'Wyjątki',exact:true}).click();await expect(page.getByTestId('erp-exception')).toHaveCount(1);
+  await page.getByRole('button',{name:'Ponów bez zmiany',exact:true}).click();await expect(page.getByTestId('erp-overall')).toHaveText('FAIL');await expect(page.getByTestId('erp-row')).toHaveCount(1);
+  await page.getByRole('button',{name:'Uzgodnienie',exact:true}).click();await expect(page.getByTestId('erp-reconciliation').filter({hasText:'BRAK W CELU'})).toHaveCount(1);
+  await page.getByRole('button',{name:'Wyjątki',exact:true}).click();await page.getByRole('button',{name:'Napraw mapowanie i ponów',exact:true}).click();
+  await expect(page.getByTestId('erp-overall')).toHaveText('PASS');await expect(page.getByTestId('erp-mode')).toContainText('NAPRAWIONO');
+  await page.getByRole('button',{name:'Uzgodnienie',exact:true}).click();await expect(page.getByTestId('erp-reconciliation').filter({hasText:'ZGODNE'})).toHaveCount(2);
+  await page.getByRole('button',{name:'Wyjątki',exact:true}).click();await expect(page.getByText('Brak otwartych wyjątków.',{exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Raport',exact:true}).click();
+  for(const format of ['JSON','CSV']){const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:`Pobierz ${format}`}).click()]);expect(download.suggestedFilename()).toBe(`erp-acceptance.${format.toLowerCase()}`);}
+  await page.getByRole('button',{name:'Przywróć konfigurację referencyjną'}).click();await expect(page.getByTestId('erp-overall')).toHaveText('PASS');await expect(page.getByTestId('erp-row')).toHaveCount(16);
+  await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Mapowanie',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.getByRole('button',{name:'Architektura',exact:true}).click();await expect(page.getByRole('link',{name:'OpenAPI / dokumentacja API →'})).toHaveAttribute('href','/lab-api/docs');
+  expect(errors).toEqual([]);
+});

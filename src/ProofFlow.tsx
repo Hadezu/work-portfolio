@@ -1,0 +1,3 @@
+import {useSharedCopy} from './shared-copy';
+import { useLocale } from './locale';
+export default function ProofFlow({input,processing,failures,output,acceptance}:{input:string;processing:string;failures:string;output:string;acceptance:string}){ const shared=useSharedCopy(); const locale=useLocale();const labels=shared.sfcc011945554;return <section className="shell pipeline five" aria-label={shared.s7e45f27ac88a}>{[[labels[0],input],[labels[1],processing],[labels[2],failures],[labels[3],output],[labels[4],acceptance]].map(([label,value])=><article key={label}><b>{label}</b><p>{value}</p></article>)}</section>;}

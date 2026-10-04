@@ -1,0 +1,30 @@
+/* Living Editorial Systems: homepage-only visual vocabulary. */
+.portfolio-home {
+  --ed-graphite:#202426;
+  --ed-charcoal:#303738;
+  --ed-paper:#f4f5f3;
+  --ed-silver:#e6e9e8;
+  --ed-neutral:#edf0ed;
+  --ed-ink:#24292b;
+  --ed-muted:#536168;
+  --ed-steel:#405c6a;
+  --ed-pale:#d4dfe4;
+  --ed-rule:#c4cccb;
+  color:var(--ed-ink);
+  background:var(--ed-paper);
+  font-family:'DM Sans',system-ui,sans-serif;
+}
+.portfolio-home em {font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic}
+.portfolio-home .editorial-index {font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ed-muted)}
+.portfolio-home :is(button,input,textarea,select,a,summary):focus-visible {outline:3px solid var(--ed-steel);outline-offset:5px}
+.portfolio-home :is(button,a.button) {border-radius:3px;min-height:44px}
+.portfolio-home :is(input,textarea,select) {font-size:16px}
+.portfolio-home :is(input,textarea,select),.portfolio-home .demo-preview {font-variant-numeric:tabular-nums}
+/* Static by default; the optional motion layer overrides only selected effects. */
+.portfolio-home,.portfolio-home *,.portfolio-home *::before,.portfolio-home *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+
+/* Reserve the pause control to avoid a hydration layout shift. */
+.portfolio-home .motion-control{min-height:56px}
+.portfolio-home .motion-toggle{display:block;margin:12px 50px 0 100px;padding:8px 0;border:0;background:none;color:#bbcbd2;font:11px 'IBM Plex Mono',monospace;text-decoration:underline;text-underline-offset:4px}
+
+@media(max-width:700px){.portfolio-home .motion-toggle{margin:8px 20px 0}}

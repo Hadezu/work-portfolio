@@ -1,0 +1,26 @@
+/* Motion is opt-in after hydration and never conceals evidence or controls. */
+@media(prefers-reduced-motion:no-preference){
+.portfolio-home[data-motion=on] .hero-material picture{transform:translate(var(--mx,0px),var(--my,0px));transition:transform 900ms ease-out!important;animation:material-breath 8s ease-in-out infinite alternate!important;animation-play-state:paused!important}
+.portfolio-home[data-motion=on][data-ambient=on] .hero-material picture{animation-play-state:running!important}
+.portfolio-home[data-motion=on] :is(.hero-inner:after,.task-fit:before){transform:translateX(calc(var(--signal,0)*8px));transition:transform 650ms ease,background-color 650ms ease!important;background:#8eafbd}
+.portfolio-home[data-motion=on] :is(.button,.task-options button,input,textarea,select){transition:transform 180ms ease-out,border-color 220ms ease,box-shadow 220ms ease!important}
+.portfolio-home[data-motion=on] .button:active{transform:translateY(1px)}
+.portfolio-home[data-motion=on] :is(input,textarea,select):focus{border-color:#365e73;box-shadow:0 0 0 2px #365e7320}
+.portfolio-home[data-motion=on] .task-options button:before{transition:color 220ms ease,transform 350ms ease!important}
+.portfolio-home[data-motion=on] .task-options button:is(:focus-visible,[aria-pressed=true]):before{transform:translateX(3px)}
+@media(hover:hover) and (pointer:fine){.portfolio-home[data-motion=on] .button:hover{transform:translateY(-2px)}.portfolio-home[data-motion=on] .proof-media{transition:transform 500ms ease-out!important}.portfolio-home[data-motion=on] .task-options button:hover:before{transform:translateX(3px);color:#223f4c}}
+}
+@keyframes material-breath{from{translate:0 6px;rotate:-.45deg;scale:1}to{translate:0 -10px;rotate:.45deg;scale:1.015}}
+
+@media(prefers-reduced-motion:no-preference){body:has(.portfolio-home[data-motion=on]) .site-header--editorial nav>a{transition:color 180ms ease!important}body:has(.portfolio-home[data-motion=on]) .language-switch a{transition:background-color 220ms ease!important}body:has(.portfolio-home[data-motion=on]) .site-navigation[open]{animation:menu-compose 220ms ease-out!important}.portfolio-home[data-motion=on] :is(.contact-status,[role=alert]){animation:menu-compose 220ms ease-out!important}}
+@keyframes menu-compose{from{translate:0 -4px}to{translate:0 0}}
+@media(prefers-reduced-motion:no-preference){.portfolio-home[data-motion=on] .button:active,.portfolio-home[data-motion=on] .button:hover:active{transform:translateY(1px)}}
+
+@media(max-width:700px){@keyframes material-breath{from{translate:0 3px;rotate:-.25deg;scale:1}to{translate:0 -7px;rotate:.25deg;scale:1.012}}}
+@media(prefers-reduced-motion:no-preference){
+.portfolio-home .system-thread{position:relative}
+.portfolio-home .system-thread:after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:#365e73;transform:scaleX(0);transform-origin:left}
+.portfolio-home[data-motion=on] .system-thread:after{transition:transform 650ms ease!important}
+.portfolio-home[data-phase=structure] .system-thread[data-stage=structure]:after{transform:scaleX(.66)}
+.portfolio-home[data-phase=verify] .system-thread:after{transform:scaleX(1)}
+}

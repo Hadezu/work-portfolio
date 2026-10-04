@@ -1,0 +1,87 @@
+{
+  "version": "delivery-sample/1",
+  "generated_at": "2026-10-01T09:05:51.803Z",
+  "source_hash": "b51cc8c7acf81feaf345fddf05f2da09ab66fdd3081343c8e932429a626ce82b",
+  "before": {
+    "source_count": 6,
+    "target_count": 4,
+    "source_gross": "1534.50",
+    "target_gross": "250.00",
+    "currency": "PLN"
+  },
+  "after": {
+    "source_count": 6,
+    "target_count": 6,
+    "source_gross": "1534.50",
+    "target_gross": "1534.50",
+    "currency": "PLN"
+  },
+  "failed": [
+    "TX-104",
+    "TX-106"
+  ],
+  "replay": {
+    "phase": "replay",
+    "selected": [
+      "TX-104",
+      "TX-106"
+    ],
+    "skipped": [
+      "TX-101",
+      "TX-102",
+      "TX-103",
+      "TX-105"
+    ],
+    "writes": 2,
+    "results": [
+      {
+        "record": "TX-104",
+        "result": "created",
+        "target_write": true
+      },
+      {
+        "record": "TX-106",
+        "result": "created",
+        "target_write": true
+      }
+    ]
+  },
+  "checks": [
+    {
+      "rule": "record_count",
+      "expected": 6,
+      "actual": 6,
+      "status": "PASS"
+    },
+    {
+      "rule": "gross_total_PLN",
+      "expected": "1534.50",
+      "actual": "1534.50",
+      "status": "PASS"
+    },
+    {
+      "rule": "field_differences",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "rule": "open_exceptions",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "rule": "one_write_per_target",
+      "expected": 6,
+      "actual": 6,
+      "status": "PASS"
+    },
+    {
+      "rule": "failed_only_replay",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    }
+  ]
+}

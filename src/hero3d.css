@@ -1,0 +1,64 @@
+.hero-stage{position:relative;min-width:0;aspect-ratio:3/2}.hero-webgl{position:absolute;inset:0}.hero-webgl canvas{display:block;width:100%;height:100%}.portfolio-home .hero-stage.ready picture{visibility:hidden;animation:none!important;transform:none!important}.hero-3d-controls{margin:0 50px 0 100px;display:flex;gap:16px;align-items:center;min-height:32px;font-size:11px;color:#c4d2d9}.hero-3d-controls button{background:none;border:0;border-bottom:1px solid #8199a6;padding:6px 0;color:inherit;font:inherit;cursor:pointer}.hero-3d-controls button:focus-visible{outline:2px solid #d4e7f0;outline-offset:5px}@media(max-width:1000px){.hero-3d-controls{margin-inline:40px 20px}}@media(max-width:700px){.hero-stage{aspect-ratio:auto;height:215px}.hero-3d-controls{margin-inline:20px}}
+
+.portfolio-home .hero-stage[data-state=pending] picture,.portfolio-home .hero-stage[data-state=loading] picture{visibility:hidden;animation:none!important}@media(prefers-reduced-motion:reduce){.portfolio-home .hero-stage[data-state=pending] picture{visibility:visible}}
+@media(scripting:none){.portfolio-home .hero-stage[data-state=pending] picture{visibility:visible}.hero-3d-controls{display:none}}
+
+@media(min-width:1001px){.hero-webgl{top:-28px;right:-24px}}
+.portfolio-home[data-motion] .hero-material .field-stage picture{animation:none!important;transform:none!important;mask-image:none;height:100%}
+.portfolio-home .field-stage picture img{display:block;width:100%;height:100%;object-fit:contain;transform:none}
+@media(max-width:760px),(pointer:coarse){.portfolio-home .field-stage[data-state=pending] picture{visibility:visible}.hero-3d-controls{display:none}}
+/* Copper / Ink / Porcelain. The portrait remains the original file. */
+.portfolio-home.portfolio-home{--ed-graphite:#19191d;--ed-paper:#f4f3f1;--ed-silver:#e5e6e4;--ed-neutral:#ecece9;--ed-steel:#884629;--ed-pale:#ead7c7}
+.portfolio-home>.portfolio-hero.portfolio-hero{background:#19191d;--ed-graphite:#19191d}
+body:has(.portfolio-home) .site-header--editorial{background:#19191d;border-bottom-color:#51443f}
+.portfolio-home>.home-start.home-start{background:#202024}
+.portfolio-home .portfolio-hero .home-hero-copy h1 em{color:#e6b18a}
+.portfolio-home .hero-material-index,.portfolio-home .hero-material figcaption{color:#d5c5bb}
+.portfolio-home .hero-inner:after,.portfolio-home .task-fit:before{background:#a95737}
+.portfolio-home .hero-material-index:before{background:#c48860}
+.portfolio-home .hero-3d-controls{color:#d5c5bb}
+.portfolio-home .hero-3d-controls button{border-color:#c48860}
+.portfolio-home .task-options button[aria-pressed=true]{border-top-color:#884629}
+@media(min-width:1001px){
+ .portfolio-home .hero-inner{grid-template-columns:1.08fr 1fr;gap:44px}
+ .portfolio-home .home-hero-copy{grid-column:2;grid-row:1}
+ .portfolio-home .hero-material{grid-column:1;grid-row:1;margin-left:-60px;margin-right:-20px}
+ .portfolio-home .home-hero-copy h1{font-size:clamp(42px,4vw,60px)}
+ .portfolio-home .hero-material-index,.portfolio-home .hero-material figcaption{margin-left:60px;margin-right:20px}
+ .portfolio-home .hero-3d-controls,.portfolio-home .motion-toggle{margin-left:60px;margin-right:20px}
+}
+@media(min-width:1001px){
+ .portfolio-home .hero-material .hero-material-index{width:calc(100% - 100px);max-width:480px;margin-left:60px;margin-right:40px;gap:12px}
+ .portfolio-home .hero-material .hero-material-index span{font-size:9px;white-space:nowrap}
+}
+/* One colour scene: calm copy surface, richer light concentrated around the artwork.
+   Static/mobile fallback uses the same petrol identity without a running clock. */
+.portfolio-home>.portfolio-hero.portfolio-hero,
+body:has(.portfolio-home) .site-header--editorial{
+ --scene-bg:#112b2c;--scene-halo:#214547;--scene-ink:#f4f3eb;
+ --scene-accent:#e6b18a;--scene-button:#e4e8da;--scene-edge:#a9c9bf;
+ background-color:var(--scene-bg);color:var(--scene-ink);
+}
+.portfolio-home>.portfolio-hero.portfolio-hero{
+ background-image:radial-gradient(ellipse at 21% 44%,color-mix(in srgb,var(--scene-halo) 66%,transparent),transparent 64%);
+ --ed-graphite:var(--scene-bg);
+}
+body:has(.portfolio-home) .site-header--editorial{border-bottom-color:color-mix(in srgb,var(--scene-edge) 35%,var(--scene-bg))}
+body:has(.portfolio-home) .site-header--editorial :is(.brand,nav>a,.site-nav-trigger,.language-switch a){color:var(--scene-ink)}
+body:has(.portfolio-home) .site-header--editorial .language-switch a[aria-current=true]{background:var(--scene-button);color:#10272b}
+.portfolio-home.portfolio-home .portfolio-hero .home-hero-copy h1{color:var(--scene-ink)}
+.portfolio-home.portfolio-home .portfolio-hero .home-hero-copy h1 em{color:var(--scene-accent)}
+.portfolio-home.portfolio-home .portfolio-hero :is(.kicker,.intro,.no-call,.hero-material-index,figcaption,.motion-toggle,.hero-3d-controls){color:color-mix(in srgb,var(--scene-ink) 85%,var(--scene-edge))}
+.portfolio-home.portfolio-home .portfolio-hero .button.primary{background:var(--scene-button);border-color:var(--scene-button);color:#10272b}
+.portfolio-home.portfolio-home .portfolio-hero .button.secondary{color:var(--scene-ink);border-color:var(--scene-edge)}
+.portfolio-home.portfolio-home .portfolio-hero :is(.hero-inner:after,.hero-material-index:before){background:var(--scene-edge)}
+.portfolio-home.portfolio-home .portfolio-hero .hero-3d-controls button{border-color:var(--scene-edge)}
+@media(max-width:1000px){.portfolio-home>.portfolio-hero.portfolio-hero{background-image:radial-gradient(ellipse at 45% 84%,color-mix(in srgb,var(--scene-halo) 66%,transparent),transparent 55%)}}
+
+.portfolio-home.portfolio-home .portfolio-hero :is(.no-call,.hero-material-index){background:transparent}
+
+/* Mobile scene is explicitly requested; the still remains while chunks load. */
+@media(max-width:760px),(pointer:coarse){.hero-3d-controls{display:flex;flex-wrap:wrap}.portfolio-home .field-stage[data-state=loading] picture{visibility:visible}}
+
+.hero-webgl{touch-action:pan-y pinch-zoom}
+.hero-touch-hint{font-size:11px;line-height:1.5}

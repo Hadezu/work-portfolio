@@ -1,0 +1,7 @@
+transaction_id,customer_code,transaction_date,gross_amount_raw,net_amount_raw,tax_amount_raw,status,country,note,sku,quantity
+TX-101,C-001,15.09.2026,"100,00","80,00","20,00",SALE, pl ,  ,SKU-001,1
+TX-102,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-001,2
+TX-103,C-002,15.09.2026,"0,00","0,00","0,00",CANCEL, pl ,  ,SKU-001,3
+TX-104,C-001,15.09.2026,"1 234,50","1 000,00","234,50",SALE, pl ,  ,SKU-X99,1
+TX-105,C-001,15.09.2026,"100,00","80,00","20,00",SALE, pl ,  ,SKU-001,2
+TX-106,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-X99,3

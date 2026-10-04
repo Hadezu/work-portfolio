@@ -1,0 +1,32 @@
+[
+  {
+    "file": "dm-sans-latin-ext.woff2",
+    "bytes": 18228,
+    "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu6-K6h9Q.woff2"
+  },
+  {
+    "file": "dm-sans-latin.woff2",
+    "bytes": 36932,
+    "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2"
+  },
+  {
+    "file": "instrument-serif-latin-ext.woff2",
+    "bytes": 12384,
+    "source": "https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zAjgn7MsNo.woff2"
+  },
+  {
+    "file": "instrument-serif-latin.woff2",
+    "bytes": 22128,
+    "source": "https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zAjjH7M.woff2"
+  },
+  {
+    "file": "ibm-plex-mono-latin-ext.woff2",
+    "bytes": 13432,
+    "source": "https://fonts.gstatic.com/s/ibmplexmono/v20/-F6qfjptAgt5VM-kVkqdyU8n3twJwl5FgtIU.woff2"
+  },
+  {
+    "file": "ibm-plex-mono-latin.woff2",
+    "bytes": 14888,
+    "source": "https://fonts.gstatic.com/s/ibmplexmono/v20/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2"
+  }
+]

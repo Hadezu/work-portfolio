@@ -1,0 +1,60 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "portfolio-local",
+  "compatibility_date": "2026-09-16",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "./worker/index.ts",
+  "workers_dev": false,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "portfolio-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "backend/cloudflare/migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CONTACT_LIMIT",
+      "namespace_id": "1",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    },
+    {
+      "name": "METRICS_LIMIT",
+      "namespace_id": "2",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    },
+    {
+      "name": "LAB_MUTATIONS",
+      "namespace_id": "3",
+      "simple": {
+        "limit": 180,
+        "period": 60
+      }
+    },
+    {
+      "name": "LAB_READS",
+      "namespace_id": "4",
+      "simple": {
+        "limit": 600,
+        "period": 60
+      }
+    }
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "run_worker_first": true
+  },
+  "observability": {
+    "enabled": true
+  }
+}

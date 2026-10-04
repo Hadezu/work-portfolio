@@ -1,0 +1,8 @@
+.data-quality code,
+.data-quality .lab-workspace p,
+.data-quality .lab-workspace h3 {
+  overflow-wrap: anywhere;
+}
+.data-quality .pipeline article { min-width: 0; }
+.data-quality .lab-toolbar label { min-width: 0; max-width: 100%; }
+.data-quality .lab-toolbar select { max-width: 100%; }

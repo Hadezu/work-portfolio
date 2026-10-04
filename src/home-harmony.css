@@ -1,0 +1,79 @@
+/* Homepage continuation of the copper/petrol hero. No demo status colours or
+   interaction semantics are changed. Resting surfaces stay static. */
+.portfolio-home.portfolio-home.portfolio-home{
+ --ed-paper:#f3f4ef;--ed-silver:#e5ebe6;--ed-neutral:#eaf0eb;
+ --ed-ink:#20302d;--ed-muted:#4d6059;--ed-rule:#bac8bd;
+ --ed-steel:#844a32;--ed-charcoal:#183532;
+}
+.portfolio-home.portfolio-home>section:not(.portfolio-hero) .editorial-index{color:#844a32}
+.portfolio-home.portfolio-home>.task-fit{background:var(--ed-paper)}
+.portfolio-home.portfolio-home .task-options button{border-color:var(--ed-rule);color:var(--ed-ink)}
+.portfolio-home.portfolio-home .task-options button:before{color:#65776b}
+.portfolio-home.portfolio-home .task-options button[aria-pressed=true]{background:#e6e9df;border-top-color:#844a32;box-shadow:inset 3px 0 #844a32}
+.portfolio-home.portfolio-home .task-options button[aria-pressed=true]:before{color:#844a32}
+.portfolio-home.portfolio-home .task-evidence{background:#e8ede5;border-top-color:#844a32}
+.portfolio-home.portfolio-home .task-evidence .button.primary{background:#173c3b;border-color:#173c3b;color:#f3f4ef}
+.portfolio-home.portfolio-home>.buyer-examples{background:#e5ebe6;border-block:1px solid #becbc2}
+.portfolio-home.portfolio-home .proof-media{border-color:#844a32}
+.portfolio-home.portfolio-home .proof-art-migration{background:#153334;color:#f3f4ef;border-color:#466761}
+.portfolio-home.portfolio-home .proof-art-migration :is(.proof-art-heading,.proof-art-flow>div>span,.proof-art-note,.proof-art-total,.proof-art-trace){color:#d8e4d9}
+.portfolio-home.portfolio-home .proof-art-migration :is(.proof-art-heading,.proof-art-action){border-color:#66847b}
+.portfolio-home.portfolio-home .proof-art-marks i{background:#e8c29e}
+.portfolio-home.portfolio-home .proof-art-marks i.held{background:transparent;border-color:#e8c29e}
+.portfolio-home.portfolio-home .proof-art-revenue{background:#f5f4ec;color:#20302d;border-color:#b5c3b8}
+.portfolio-home.portfolio-home .proof-art-revenue :is(.proof-art-heading,.proof-art-before,.proof-art-note,.proof-art-label,.proof-art-total){color:#4d6059}
+.portfolio-home.portfolio-home .proof-art-revenue .proof-art-delta{color:#844a32}
+.portfolio-home.portfolio-home .proof-art-revenue .proof-art-after{color:#173c3b}
+.portfolio-home.portfolio-home :is(.proof-art figcaption,.proof-description p){color:#4d6059}
+.portfolio-home.portfolio-home .compact-proofs article{border-color:#aabdb1}
+.portfolio-home.portfolio-home .evidence-preview:not(.proof-art-panel):not(.support-art-panel){background:#f3f4ef;color:#20302d;border-color:#adbbb0}
+.portfolio-home.portfolio-home :is(.evidence-topline,.evidence-bottom){background:#edf0e8;border-color:#c0cabe;color:#38554b}
+.portfolio-home.portfolio-home :is(.evidence-topline>span:last-child,.evidence-bottom>span){color:#844a32}
+.portfolio-home.portfolio-home :is(.proof-art-panel,.evidence-preview):hover{border-color:#844a32}
+.portfolio-home.portfolio-home>.home-start.home-start{background:#153334;color:#f3f4ef;border-bottom:3px solid #b5805f}
+.portfolio-home.portfolio-home .home-start.home-start .editorial-index{color:#e8c29e}
+.portfolio-home.portfolio-home .home-start li{border-color:#66847b}
+.portfolio-home.portfolio-home .home-start li:before{color:#e8c29e}
+.portfolio-home.portfolio-home .home-start p{color:#d8e4d9}
+.portfolio-home .home-ai-workflow{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;border-top:1px solid #66847b;padding:28px 0;margin:0 0 24px}
+.portfolio-home .home-ai-workflow .workflow-tool{font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#e8c29e}
+.portfolio-home .home-ai-workflow h3{font-size:25px;line-height:1.25;margin:10px 0 0;max-width:340px}
+.portfolio-home .home-ai-workflow p{margin:0;max-width:720px;font-size:15px;line-height:1.75}
+.portfolio-home .home-ai-workflow p+p{margin-top:14px}
+@media(max-width:700px){.portfolio-home .home-ai-workflow{grid-template-columns:1fr;gap:20px;padding-block:24px}.portfolio-home .home-ai-workflow h3{font-size:24px;max-width:340px}.portfolio-home .home-ai-workflow p{font-size:14px}}
+.portfolio-home.portfolio-home .about-portrait{padding:10px;background:#dce5dc;border-left:2px solid #844a32}
+.portfolio-home.portfolio-home .about-portrait figcaption{color:#435b50;gap:16px;flex-wrap:wrap;padding:0 4px 4px}
+.portfolio-home.portfolio-home .about-copy :is(.collaboration-terms,details){border-color:#bac8bd}
+.portfolio-home.portfolio-home>.editorial-contact{background:#e7ede6;border-color:#adbbb0}
+.portfolio-home.portfolio-home .contact-form :is(input,textarea,select){background:#f8f8f3;color:#20302d;border-color:#83998b}
+.portfolio-home.portfolio-home .contact-form :is(input,textarea)::placeholder{color:#52685a}
+.portfolio-home.portfolio-home .contact-form .button.primary{background:#173c3b;border-color:#173c3b;color:#f3f4ef}
+.portfolio-home.portfolio-home .contact-form :is(input,textarea,select):focus-visible{outline-color:#844a32}
+body:has(.portfolio-home) footer.editorial-footer{background:#153334;border-top:1px solid #66847b;color:#d8e4d9}
+body:has(.portfolio-home) footer.editorial-footer :is(span,a,.motion-toggle){color:#d8e4d9}
+body:has(.portfolio-home) footer.editorial-footer :focus-visible{outline:3px solid #e8c29e;outline-offset:4px}
+body:has(.portfolio-home) .site-navigation{background:#f3f4ef;border-color:#adbbb0;color:#20302d}
+body:has(.portfolio-home) .site-navigation .site-nav-contact{background:#173c3b;color:#f3f4ef}
+body:has(.portfolio-home) .site-navigation :is(.site-nav-footer,.site-nav-hint){background:#e5ebe6}
+@media(max-width:700px){.portfolio-home.portfolio-home .about-portrait{padding:7px;box-sizing:border-box}}
+.portfolio-home.portfolio-home .task-evidence .button.secondary{background:transparent;color:#173c3b;border:0;border-bottom:1px solid #844a32;border-radius:0}
+.portfolio-home.portfolio-home .about-copy a{color:#844a32;text-underline-offset:4px}
+body:has(.portfolio-home) .trust-block{background:#f3f4ef;color:#4d6059}
+body:has(.portfolio-home) .trust-block div{color:#20302d}
+/* Balanced insets for the problem index and its now-filled evidence surface. */
+.portfolio-home.portfolio-home .task-fit>.editorial-index{margin-bottom:14px}
+.portfolio-home.portfolio-home .task-fit>h2{margin-bottom:16px}
+.portfolio-home.portfolio-home .task-fit>.section-intro{margin-bottom:0}
+.portfolio-home.portfolio-home .task-layout{margin-top:32px}
+.portfolio-home.portfolio-home .task-options button,
+.portfolio-home.portfolio-home .task-options button[aria-pressed=true]{padding-inline:16px}
+.portfolio-home.portfolio-home .task-evidence{padding:26px 24px 22px;box-sizing:border-box}
+.portfolio-home.portfolio-home .task-evidence h3{margin:0 0 20px}
+.portfolio-home.portfolio-home .task-evidence .hero-actions{margin-block:22px 18px}
+@media(max-width:700px){
+ .portfolio-home.portfolio-home .task-layout{margin-top:24px;gap:28px}
+ .portfolio-home.portfolio-home .task-options button,
+ .portfolio-home.portfolio-home .task-options button[aria-pressed=true]{padding-inline:12px 20px}
+ .portfolio-home.portfolio-home .task-options button[aria-pressed=true]:after{right:8px}
+ .portfolio-home.portfolio-home .task-evidence{padding:22px 20px 20px}
+}

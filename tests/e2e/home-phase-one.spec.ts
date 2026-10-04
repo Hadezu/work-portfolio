@@ -1,0 +1,24 @@
+import {expect,test} from '@playwright/test';
+import {homeJourney} from '../../src/home-journey-copy';
+for(const locale of ['en','pl'] as const)test(`${locale}: simple inline enquiry, no-category path and private funnel`,async({page})=>{
+ const prefix=locale==='en'?'/en':'',events:{event:string;path:string}[]=[];let requests=0,id='';
+ await page.route('**/api/metrics',r=>{const body=r.request().postDataJSON();expect(Object.keys(body).sort()).toEqual(['event','path']);events.push(body);return r.fulfill({status:204});});
+ await page.route('**/api/contact',r=>{const body=r.request().postDataJSON();if(id)expect(body.id).toBe(id);id=body.id;expect(body.path).toBe(prefix+'/contact');expect(body.service).toBe('other');requests++;return r.fulfill({status:requests===1?503:202,json:requests===1?{error:'delivery_unconfirmed'}:{id}});});
+ await page.goto(prefix||'/');
+ await expect(page.locator('.no-call')).toHaveText(homeJourney[locale].noCall);
+ await page.getByRole('button',{name:homeJourney[locale].other,exact:true}).click();
+ await expect(page.locator('#task-evidence')).toContainText(homeJourney[locale].otherBody);
+ await expect(page.locator('#task-evidence a')).toHaveAttribute('href',prefix+'/contact');
+ await page.locator('.portfolio-hero a.primary').click();
+ await expect(page.locator('form')).toBeInViewport();
+ await expect.poll(()=>events.filter(e=>e.event==='form_view').length).toBe(1);
+ await expect(page.locator('[name=name]')).not.toBeVisible();
+ await page.locator('[name=email]').fill('test@example.com');await page.locator('[name=message]').fill('Synthetic description which must survive a sending failure.');
+ await page.locator('button[type=submit]').click();await expect(page.getByRole('alert')).toBeVisible();
+ await expect(page.locator('[name=message]')).toHaveValue('Synthetic description which must survive a sending failure.');
+ await expect.poll(()=>events.filter(e=>e.event==='form_start').length).toBe(1);
+ await expect.poll(()=>events.filter(e=>e.event==='form_error').length).toBe(1);
+ expect(events.some(e=>e.event==='contact_submit')).toBe(false);
+ await page.locator('button[type=submit]').click();await expect(page.locator('.contact-status')).toContainText(id);
+ expect(requests).toBe(2);
+});

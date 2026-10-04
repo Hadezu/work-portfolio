@@ -1,0 +1,67 @@
+/* Shared chrome and buyer-facing entrances. Working demo controls keep their
+   semantic status colours and layout; homepage composition stays independent. */
+body:has(.contact-page--standalone),body:has(.premium-intro){background:#f4f5f3}
+.site-header--editorial .site-navigation{background:#f4f5f3;color:#24292b;border-color:#aeb9bc;border-radius:2px;box-shadow:0 24px 80px #20242635}
+.site-header--editorial .site-nav-heading h2{font-weight:400;letter-spacing:-.035em}
+.site-header--editorial .site-navigation :is(input,.site-nav-result,.site-nav-heading>button){border-radius:2px}
+.site-header--editorial .site-nav-goals .site-nav-result{background:transparent;border-color:#c4cccb}
+.site-header--editorial .site-nav-result:hover,.site-header--editorial .site-nav-result:focus-visible{background:#e6e9e8;border-color:#879ba5}
+.site-header--editorial .site-navigation :is(.site-nav-footer,.site-nav-hint){background:#e6e9e8;border-color:#c4cccb}
+.site-header--editorial .site-nav-contact{background:#405c6a;border-radius:2px}
+.site-header--editorial .site-navigation :is(.site-nav-eyebrow,.site-nav-count,.site-nav-results h3,.site-nav-result small,.site-nav-footer span,.site-nav-secondary,.site-nav-hint,.site-nav-disclosure){color:#536168}
+.site-header--editorial .site-navigation :focus-visible{outline:3px solid #405c6a;outline-offset:3px}
+footer.editorial-footer{width:100%;box-sizing:border-box;gap:28px;align-items:center;flex-wrap:wrap}
+footer.editorial-footer .footer-identity{display:grid;gap:4px;max-width:460px}
+footer.editorial-footer :is(span,a){color:#405c6a}
+footer.editorial-footer a{font-weight:500;text-underline-offset:5px;overflow-wrap:anywhere}
+footer.editorial-footer .motion-toggle{color:#405c6a}
+
+main.contact-page--standalone{color:#24292b;padding-block:52px 80px}
+.contact-page--standalone>div>h1{font-size:clamp(38px,4.5vw,64px);font-weight:400;letter-spacing:-.045em;line-height:1.08;margin:28px 0 44px}
+.contact-page--standalone .contact-grid{column-gap:clamp(32px,6vw,90px)}
+.contact-page--standalone .contact-grid>div>p{max-width:470px;line-height:1.8;color:#536168}
+.contact-page--standalone .contact-grid>div>a{color:#405c6a;text-decoration:underline;text-underline-offset:5px}
+.contact-page--standalone .contact-form{min-width:0;padding:26px;background:#edf0ed;border-top:2px solid #405c6a}
+.contact-page--standalone .contact-form label{font-size:13px;font-weight:500;color:#24292b}
+.contact-page--standalone .contact-form :is(input,textarea,select){background:#f4f5f3;color:#24292b;border:1px solid #8e9ca2;border-radius:0;max-width:100%;font-size:16px;padding:14px}
+.contact-page--standalone .contact-form textarea{min-height:230px;line-height:1.65}
+.contact-page--standalone .contact-form :is(input,textarea)::placeholder{color:#536168;opacity:1}
+.contact-page--standalone .contact-form .contact-guidance{background:transparent;border:0;border-top:1px solid #aeb9bc;border-radius:0;padding:14px 0}
+.contact-page--standalone .contact-next{background:none;border:0;border-top:1px solid #aeb9bc;border-radius:0;padding:24px 0;margin-top:24px}
+.contact-page--standalone .contact-next h2{font-weight:400;font-size:25px;letter-spacing:-.025em}
+.contact-page--standalone .contact-next li{padding-block:4px;font-size:14px}
+.contact-page--standalone .contact-status{border-radius:0;border-color:#aeb9bc;background:#edf0ed;overflow-wrap:anywhere}
+.contact-page--standalone .button.primary,.premium-intro .button.primary{background:#405c6a;border:1px solid #405c6a;border-radius:2px;color:white;padding:14px 22px}
+.contact-page--standalone :focus-visible,.premium-intro :focus-visible{outline:3px solid #405c6a;outline-offset:4px}
+
+section.premium-intro{padding-block:44px 32px;color:#24292b;border-bottom:1px solid #c4cccb;margin-bottom:28px}
+section.premium-intro h1{font-size:clamp(34px,4.2vw,58px);font-weight:400;letter-spacing:-.04em;line-height:1.12;max-width:980px;margin:22px 0}
+section.premium-intro h1 span{color:#536168}
+section.premium-intro .eyebrow{font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#405c6a;margin-top:24px}
+section.premium-intro .proof-business-context{border-left:2px solid #879ba5;padding-left:22px;margin-block:24px;max-width:780px}
+section.premium-intro .proof-business-context p{font-size:17px;line-height:1.7}
+section.premium-intro .proof-business-context .button{background:none;border:0;border-bottom:1px solid #405c6a;border-radius:0;color:#24292b;padding:10px 0}
+section.premium-intro>p{max-width:850px;font-size:14px;line-height:1.75;color:#536168}
+section.premium-intro .buyer-preview-start{display:block;margin:24px 0}
+section.premium-intro .demo-preview{max-width:620px;margin:24px 0}
+section.premium-intro .demo-preview figcaption{color:#536168;font-size:12px;line-height:1.6}
+section.premium-intro .privacy{background:#edf0ed;border-color:#c4cccb;border-radius:0;max-width:850px}
+section.premium-intro :is(.back,.privacy small){color:#536168}
+main:has(.premium-intro) :is(.pipeline p,.section-heading>p){color:#536168}
+.migration-page .migration-actions label{min-width:0;max-width:100%}
+.migration-page input[type=file]{max-width:100%;min-width:0;box-sizing:border-box}
+.premium-intro+.pipeline{background:#edf0ed;border-color:#c4cccb;border-radius:0;box-shadow:none}
+.proof-next-step.proof-next-step{border-color:#c4cccb;padding-block:40px}
+.proof-next-step.proof-next-step h2{font-size:clamp(30px,3vw,42px);font-weight:400;letter-spacing:-.035em}
+.proof-next-step .button.primary{background:#405c6a;border-color:#405c6a;border-radius:2px}
+@media(max-width:760px){
+ .site-header--editorial nav{gap:8px}
+ footer.editorial-footer{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+ footer.editorial-footer a{margin:0}
+ main.contact-page--standalone{padding-block:30px 48px}
+ .contact-page--standalone>div>h1{margin-bottom:28px}
+ .contact-page--standalone .contact-form{padding:22px 16px}
+ section.premium-intro{padding-block:28px 24px}
+ section.premium-intro .proof-business-context{padding-left:16px}
+ section.premium-intro .proof-business-context p{font-size:16px}
+}

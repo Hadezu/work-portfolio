@@ -1,0 +1,3 @@
+import {useSharedCopy} from './shared-copy';
+import { useLocale } from './locale';
+export default function VerificationGuide(){ const shared=useSharedCopy(); const locale=useLocale();const en=locale==='en';return <aside className="verification-guide" aria-label={shared.s44a5161624f7}><h2>{shared.s44a5161624f7}</h2><p>{shared.s0fb3bd1cc0f7}</p><ol><li><strong>{shared.s69b4bf65a0ee}</strong><span>{shared.sbc4afe704889}</span></li><li><strong>{shared.s368d458bed53}</strong><span>{shared.s30dd48f1101e}</span></li><li><strong>{shared.s780b280573d8}</strong><span>{shared.s812682962783}</span></li></ol></aside>;}

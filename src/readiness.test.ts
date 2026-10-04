@@ -1,0 +1,11 @@
+import {test,expect} from 'vitest';
+import {createElement} from 'react';
+import {renderToStaticMarkup} from './test-render';
+import {EvidenceView} from './WorkflowViews';
+import VerificationGuide from './VerificationGuide';
+import {createDemoDataset,reconcile} from './reconciliation';
+import {createBridgeDataset,detectBridgeExceptions} from './data-bridge';
+test('reconciliation reference, single amount deviation and restoration use actual rules',()=>{const d=createDemoDataset(true);expect(reconcile(d)).toHaveLength(0);d.invoices[0].amount+=12.5;expect(reconcile(d)).toHaveLength(1);expect(reconcile(d)[0].type).toBe('Niezgodna kwota');expect(reconcile(createDemoDataset(true))).toHaveLength(0);expect(reconcile(createDemoDataset())).toHaveLength(18);});
+test('bridge reference, single tracking deviation and restoration use actual rules',()=>{const d=createBridgeDataset(true);expect(detectBridgeExceptions(d)).toHaveLength(0);d.shipments[0].trackingNumber='';expect(detectBridgeExceptions(d)).toHaveLength(1);expect(detectBridgeExceptions(createBridgeDataset(true))).toHaveLength(0);expect(detectBridgeExceptions(createBridgeDataset())).toHaveLength(11);});
+test.each([null,undefined,{},[]])('empty evidence is intentional: %s',value=>{const html=renderToStaticMarkup(createElement(EvidenceView,{value}));expect(html).toContain('Brak wyniku');expect(html).not.toContain('<pre');});
+test('guide explains acceptance, single failure and repair without weakening technical evidence',()=>{const html=renderToStaticMarkup(createElement(VerificationGuide));expect(html).toContain('Sprawdź sam w 30 sekund');expect(html).toContain('1 FAIL');expect(html).toContain('Przywróć konfigurację');});

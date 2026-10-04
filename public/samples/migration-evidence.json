@@ -1,0 +1,4355 @@
+{
+  "sample_version": "delivery-sample/1",
+  "synthetic": true,
+  "disclosure": "Independent working demonstration using synthetic data. Not a client deployment.",
+  "generated_at": "2026-10-01T09:05:51.803Z",
+  "before": {
+    "run_id": "MIG-6c06a7ae14b25ccec3a48f0a81d8fbf8",
+    "source": "migration",
+    "parent_run": "MIG-1e9018e25208b726ee35624e7d31f597",
+    "timestamp": "2026-10-01T09:05:51.801Z",
+    "ruleset": "migration/1.0",
+    "synthetic": true,
+    "stage": "reconciled",
+    "overall_status": "FAIL",
+    "filename": "synthetic-orders.csv",
+    "content": "transaction_id,customer_code,transaction_date,gross_amount_raw,net_amount_raw,tax_amount_raw,status,country,note,sku,quantity\r\nTX-101,C-001,15.09.2026,\"100,00\",\"80,00\",\"20,00\",SALE, pl ,  ,SKU-001,1\r\nTX-102,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-001,2\r\nTX-103,C-002,15.09.2026,\"0,00\",\"0,00\",\"0,00\",CANCEL, pl ,  ,SKU-001,3\r\nTX-104,C-001,15.09.2026,\"1 234,50\",\"1 000,00\",\"234,50\",SALE, pl ,  ,SKU-X99,1\r\nTX-105,C-001,15.09.2026,\"100,00\",\"80,00\",\"20,00\",SALE, pl ,  ,SKU-001,2\r\nTX-106,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-X99,3\r\n",
+    "input_sha256": "b51cc8c7acf81feaf345fddf05f2da09ab66fdd3081343c8e932429a626ce82b",
+    "rows": [
+      {
+        "transaction_id": "TX-101",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "100,00",
+        "net_amount_raw": "80,00",
+        "tax_amount_raw": "20,00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "1"
+      },
+      {
+        "transaction_id": "TX-102",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "50.00",
+        "net_amount_raw": "40.00",
+        "tax_amount_raw": "10.00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "2"
+      },
+      {
+        "transaction_id": "TX-103",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "0,00",
+        "net_amount_raw": "0,00",
+        "tax_amount_raw": "0,00",
+        "status": "CANCEL",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "3"
+      },
+      {
+        "transaction_id": "TX-104",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "1 234,50",
+        "net_amount_raw": "1 000,00",
+        "tax_amount_raw": "234,50",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-X99",
+        "quantity": "1"
+      },
+      {
+        "transaction_id": "TX-105",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "100,00",
+        "net_amount_raw": "80,00",
+        "tax_amount_raw": "20,00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "2"
+      },
+      {
+        "transaction_id": "TX-106",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "50.00",
+        "net_amount_raw": "40.00",
+        "tax_amount_raw": "10.00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-X99",
+        "quantity": "3"
+      }
+    ],
+    "validation": {
+      "accepted": 6,
+      "rejected": 0,
+      "failures": [],
+      "lineage": [
+        {
+          "record_id": "TX-101",
+          "target_field": "transaction_id",
+          "target_value": "TX-101",
+          "expected_value": "TX-101",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-101",
+          "typed_value": "TX-101",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-101",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "gross_amount",
+          "target_value": "100.00",
+          "expected_value": "100.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "100.00",
+          "typed_value": "100.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "100,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "net_amount",
+          "target_value": "80.00",
+          "expected_value": "80.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "80.00",
+          "typed_value": "80.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "80,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "tax_amount",
+          "target_value": "20.00",
+          "expected_value": "20.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "20.00",
+          "typed_value": "20.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "20,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "transaction_id",
+          "target_value": "TX-102",
+          "expected_value": "TX-102",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-102",
+          "typed_value": "TX-102",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-102",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "gross_amount",
+          "target_value": "50.00",
+          "expected_value": "50.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "50.00",
+          "typed_value": "50.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "50.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "net_amount",
+          "target_value": "40.00",
+          "expected_value": "40.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "40.00",
+          "typed_value": "40.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "40.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "tax_amount",
+          "target_value": "10.00",
+          "expected_value": "10.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "10.00",
+          "typed_value": "10.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "10.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "transaction_id",
+          "target_value": "TX-103",
+          "expected_value": "TX-103",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-103",
+          "typed_value": "TX-103",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-103",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "gross_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "net_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "tax_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "normalized_status",
+          "target_value": "cancelled",
+          "expected_value": "cancelled",
+          "transformation": "map_status",
+          "normalized_value": "CANCEL",
+          "typed_value": "cancelled",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "CANCEL",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "transaction_id",
+          "target_value": "TX-104",
+          "expected_value": "TX-104",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-104",
+          "typed_value": "TX-104",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-104",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "gross_amount",
+          "target_value": "1234.50",
+          "expected_value": "1234.50",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "1234.50",
+          "typed_value": "1234.50",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "1 234,50",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "net_amount",
+          "target_value": "1000.00",
+          "expected_value": "1000.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "1000.00",
+          "typed_value": "1000.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "1 000,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "tax_amount",
+          "target_value": "234.50",
+          "expected_value": "234.50",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "234.50",
+          "typed_value": "234.50",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "234,50",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "transaction_id",
+          "target_value": "TX-105",
+          "expected_value": "TX-105",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-105",
+          "typed_value": "TX-105",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-105",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "gross_amount",
+          "target_value": "100.00",
+          "expected_value": "100.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "100.00",
+          "typed_value": "100.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "100,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "net_amount",
+          "target_value": "80.00",
+          "expected_value": "80.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "80.00",
+          "typed_value": "80.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "80,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "tax_amount",
+          "target_value": "20.00",
+          "expected_value": "20.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "20.00",
+          "typed_value": "20.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "20,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "transaction_id",
+          "target_value": "TX-106",
+          "expected_value": "TX-106",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-106",
+          "typed_value": "TX-106",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-106",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "gross_amount",
+          "target_value": "50.00",
+          "expected_value": "50.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "50.00",
+          "typed_value": "50.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "50.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "net_amount",
+          "target_value": "40.00",
+          "expected_value": "40.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "40.00",
+          "typed_value": "40.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "40.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "tax_amount",
+          "target_value": "10.00",
+          "expected_value": "10.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "10.00",
+          "typed_value": "10.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "10.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        }
+      ],
+      "normalized": [
+        {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-104",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "1234.50",
+          "net_amount": "1000.00",
+          "tax_amount": "234.50",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-106",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        }
+      ]
+    },
+    "mappings": [
+      {
+        "kind": "customer",
+        "source": "C-001",
+        "target": "SYN-C1"
+      },
+      {
+        "kind": "customer",
+        "source": "C-002",
+        "target": "SYN-C2"
+      },
+      {
+        "kind": "product",
+        "source": "SKU-001",
+        "target": "B-P1"
+      }
+    ],
+    "exceptions": [
+      {
+        "record": "TX-104",
+        "rule": "missing_mapping",
+        "expected": "mapping exists",
+        "actual": "SKU-X99"
+      },
+      {
+        "record": "TX-106",
+        "rule": "missing_mapping",
+        "expected": "mapping exists",
+        "actual": "SKU-X99"
+      }
+    ],
+    "target": [
+      {
+        "transaction_id": "TX-101",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-101",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 1,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-102",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-102",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 2,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-103",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "0.00",
+        "net_amount": "0.00",
+        "tax_amount": "0.00",
+        "normalized_status": "cancelled",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-103",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 3,
+        "status": "cancelled"
+      },
+      {
+        "transaction_id": "TX-105",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-105",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 2,
+        "status": "ready"
+      }
+    ],
+    "comparisons": [
+      {
+        "record": "TX-101",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-101",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-101",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-102",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-102",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-102",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-103",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-103",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "actual": {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-103",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-104",
+        "status": "MISSING TARGET",
+        "expected": {
+          "transaction_id": "TX-104",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "1234.50",
+          "net_amount": "1000.00",
+          "tax_amount": "234.50",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-104",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "actual": null,
+        "differences": {
+          "transaction_id": {
+            "expected": "TX-104",
+            "actual": null
+          },
+          "customer_id": {
+            "expected": "SYN-C1",
+            "actual": null
+          },
+          "transaction_date": {
+            "expected": "2026-09-15",
+            "actual": null
+          },
+          "gross_amount": {
+            "expected": "1234.50",
+            "actual": null
+          },
+          "net_amount": {
+            "expected": "1000.00",
+            "actual": null
+          },
+          "tax_amount": {
+            "expected": "234.50",
+            "actual": null
+          },
+          "normalized_status": {
+            "expected": "posted",
+            "actual": null
+          },
+          "country_code": {
+            "expected": "PL",
+            "actual": null
+          },
+          "note": {
+            "expected": null,
+            "actual": null
+          },
+          "external_id": {
+            "expected": "TX-104",
+            "actual": null
+          },
+          "version": {
+            "expected": 1,
+            "actual": null
+          },
+          "product_id": {
+            "expected": "B-P99",
+            "actual": null
+          },
+          "quantity": {
+            "expected": 1,
+            "actual": null
+          },
+          "status": {
+            "expected": "ready",
+            "actual": null
+          }
+        }
+      },
+      {
+        "record": "TX-105",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-105",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-105",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-106",
+        "status": "MISSING TARGET",
+        "expected": {
+          "transaction_id": "TX-106",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-106",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 3,
+          "status": "ready"
+        },
+        "actual": null,
+        "differences": {
+          "transaction_id": {
+            "expected": "TX-106",
+            "actual": null
+          },
+          "customer_id": {
+            "expected": "SYN-C2",
+            "actual": null
+          },
+          "transaction_date": {
+            "expected": "2026-09-15",
+            "actual": null
+          },
+          "gross_amount": {
+            "expected": "50.00",
+            "actual": null
+          },
+          "net_amount": {
+            "expected": "40.00",
+            "actual": null
+          },
+          "tax_amount": {
+            "expected": "10.00",
+            "actual": null
+          },
+          "normalized_status": {
+            "expected": "posted",
+            "actual": null
+          },
+          "country_code": {
+            "expected": "PL",
+            "actual": null
+          },
+          "note": {
+            "expected": null,
+            "actual": null
+          },
+          "external_id": {
+            "expected": "TX-106",
+            "actual": null
+          },
+          "version": {
+            "expected": 1,
+            "actual": null
+          },
+          "product_id": {
+            "expected": "B-P99",
+            "actual": null
+          },
+          "quantity": {
+            "expected": 3,
+            "actual": null
+          },
+          "status": {
+            "expected": "ready",
+            "actual": null
+          }
+        }
+      }
+    ],
+    "totals": {
+      "source_count": 6,
+      "target_count": 4,
+      "source_gross": "1534.50",
+      "target_gross": "250.00",
+      "currency": "PLN"
+    },
+    "attempts": [
+      {
+        "phase": "migration",
+        "selected": [
+          "TX-101",
+          "TX-102",
+          "TX-103",
+          "TX-104",
+          "TX-105",
+          "TX-106"
+        ],
+        "skipped": [],
+        "writes": 4,
+        "results": [
+          {
+            "record": "TX-101",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-102",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-103",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-104",
+            "result": "missing_mapping",
+            "target_write": false
+          },
+          {
+            "record": "TX-105",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-106",
+            "result": "missing_mapping",
+            "target_write": false
+          }
+        ]
+      }
+    ],
+    "audit": [
+      {
+        "action": "load",
+        "run_id": "MIG-ed5de548-45a2-460d-9040-a26f85f54cbb",
+        "timestamp": "2026-10-01T09:05:51.796Z",
+        "detail": "6 synthetic order lines; target is empty"
+      },
+      {
+        "action": "validate",
+        "run_id": "MIG-b66e0e5773bb97f41e2c3b86574afc49",
+        "timestamp": "2026-10-01T09:05:51.796Z",
+        "detail": "6 valid; 0 rejected"
+      },
+      {
+        "action": "mapping",
+        "run_id": "MIG-602068c9b483c30ea4a00b6fde0b2ff5",
+        "timestamp": "2026-10-01T09:05:51.799Z",
+        "detail": "Removed SKU-X99 → B-P99 before migration"
+      },
+      {
+        "action": "migrate",
+        "run_id": "MIG-1e9018e25208b726ee35624e7d31f597",
+        "timestamp": "2026-10-01T09:05:51.799Z",
+        "detail": "4 written; 2 exceptions"
+      },
+      {
+        "action": "reconcile",
+        "run_id": "MIG-6c06a7ae14b25ccec3a48f0a81d8fbf8",
+        "timestamp": "2026-10-01T09:05:51.801Z",
+        "detail": "FAIL: 2 differences"
+      }
+    ],
+    "checks": [
+      {
+        "rule": "record_count",
+        "expected": 6,
+        "actual": 4,
+        "status": "FAIL"
+      },
+      {
+        "rule": "gross_total_PLN",
+        "expected": "1534.50",
+        "actual": "250.00",
+        "status": "FAIL"
+      },
+      {
+        "rule": "field_differences",
+        "expected": 0,
+        "actual": 2,
+        "status": "FAIL"
+      },
+      {
+        "rule": "open_exceptions",
+        "expected": 0,
+        "actual": 2,
+        "status": "FAIL"
+      },
+      {
+        "rule": "one_write_per_target",
+        "expected": 4,
+        "actual": 4,
+        "status": "PASS"
+      },
+      {
+        "rule": "failed_only_replay",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      }
+    ],
+    "state": {
+      "mappings": [
+        {
+          "kind": "customer",
+          "source": "C-001",
+          "target": "SYN-C1"
+        },
+        {
+          "kind": "customer",
+          "source": "C-002",
+          "target": "SYN-C2"
+        },
+        {
+          "kind": "product",
+          "source": "SKU-001",
+          "target": "B-P1"
+        }
+      ],
+      "entities": [
+        {
+          "kind": "customer",
+          "id": "SYN-C1",
+          "payload": {
+            "name": "Synthetic C-001"
+          }
+        },
+        {
+          "kind": "customer",
+          "id": "SYN-C2",
+          "payload": {
+            "name": "Synthetic C-002"
+          }
+        },
+        {
+          "kind": "product",
+          "id": "B-P1",
+          "payload": {
+            "name": "Synthetic SKU-001"
+          }
+        },
+        {
+          "kind": "product",
+          "id": "B-P99",
+          "payload": {
+            "name": "Synthetic SKU-X99"
+          }
+        }
+      ],
+      "events": {
+        "migration-TX-101": {
+          "hash": "1c1867480856acca0fc7993e888e8666de46f650a0c4834056e4359d93db992d",
+          "input": {
+            "event_id": "migration-TX-101",
+            "external_id": "TX-101",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-001",
+            "quantity": 1,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-102": {
+          "hash": "18afc10b2b476144bb52f8cf27ac82ef443fe1216bd58bfe5cf7006413a98f42",
+          "input": {
+            "event_id": "migration-TX-102",
+            "external_id": "TX-102",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-001",
+            "quantity": 2,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-103": {
+          "hash": "3de590222fab22cdea65d14cc12cca7ca93c96412a4d6ead3e9f64cbc3fc9f95",
+          "input": {
+            "event_id": "migration-TX-103",
+            "external_id": "TX-103",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-001",
+            "quantity": 3,
+            "status": "cancelled"
+          },
+          "status": "applied"
+        },
+        "migration-TX-104": {
+          "hash": "0f9c4b467e675a23d82a61073d27c8615bbf9d373c3107e6b94c6ab27c3d54d1",
+          "input": {
+            "event_id": "migration-TX-104",
+            "external_id": "TX-104",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-X99",
+            "quantity": 1,
+            "status": "ready"
+          },
+          "status": "failed"
+        },
+        "migration-TX-105": {
+          "hash": "87102b9bc3bebf349a613882420a706094196cadf3f37d6f027eb76c3f1bdfe6",
+          "input": {
+            "event_id": "migration-TX-105",
+            "external_id": "TX-105",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-001",
+            "quantity": 2,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-106": {
+          "hash": "8faa025b1752f66fae54574abc3eef96382232b574081800b0edca6766023acd",
+          "input": {
+            "event_id": "migration-TX-106",
+            "external_id": "TX-106",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-X99",
+            "quantity": 3,
+            "status": "ready"
+          },
+          "status": "failed"
+        }
+      },
+      "targets": {
+        "TX-101": {
+          "external_id": "TX-101",
+          "version": 1,
+          "customer_id": "SYN-C1",
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "TX-102": {
+          "external_id": "TX-102",
+          "version": 1,
+          "customer_id": "SYN-C2",
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "TX-103": {
+          "external_id": "TX-103",
+          "version": 1,
+          "customer_id": "SYN-C2",
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "TX-105": {
+          "external_id": "TX-105",
+          "version": 1,
+          "customer_id": "SYN-C1",
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        }
+      },
+      "history": [
+        {
+          "event_id": "customer/SYN-C1",
+          "result": "created",
+          "evidence": {
+            "entity": "customer",
+            "target_id": "SYN-C1",
+            "payload": {
+              "name": "Synthetic C-001"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "customer/SYN-C2",
+          "result": "created",
+          "evidence": {
+            "entity": "customer",
+            "target_id": "SYN-C2",
+            "payload": {
+              "name": "Synthetic C-002"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "product/B-P1",
+          "result": "created",
+          "evidence": {
+            "entity": "product",
+            "target_id": "B-P1",
+            "payload": {
+              "name": "Synthetic SKU-001"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "product/B-P99",
+          "result": "created",
+          "evidence": {
+            "entity": "product",
+            "target_id": "B-P99",
+            "payload": {
+              "name": "Synthetic SKU-X99"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-101",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-101",
+            "external_id": "TX-101",
+            "source_version": 1,
+            "input_hash": "1c1867480856acca0fc7993e888e8666de46f650a0c4834056e4359d93db992d",
+            "target": {
+              "external_id": "TX-101",
+              "version": 1,
+              "customer_id": "SYN-C1",
+              "product_id": "B-P1",
+              "quantity": 1,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-102",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-102",
+            "external_id": "TX-102",
+            "source_version": 1,
+            "input_hash": "18afc10b2b476144bb52f8cf27ac82ef443fe1216bd58bfe5cf7006413a98f42",
+            "target": {
+              "external_id": "TX-102",
+              "version": 1,
+              "customer_id": "SYN-C2",
+              "product_id": "B-P1",
+              "quantity": 2,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-103",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-103",
+            "external_id": "TX-103",
+            "source_version": 1,
+            "input_hash": "3de590222fab22cdea65d14cc12cca7ca93c96412a4d6ead3e9f64cbc3fc9f95",
+            "target": {
+              "external_id": "TX-103",
+              "version": 1,
+              "customer_id": "SYN-C2",
+              "product_id": "B-P1",
+              "quantity": 3,
+              "status": "cancelled"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-104",
+          "result": "missing_mapping",
+          "evidence": {
+            "event_id": "migration-TX-104",
+            "external_id": "TX-104",
+            "source_version": 1,
+            "input_hash": "0f9c4b467e675a23d82a61073d27c8615bbf9d373c3107e6b94c6ab27c3d54d1",
+            "mapping_kind": "product",
+            "source_value": "SKU-X99",
+            "expected": "mapping exists",
+            "actual": "missing",
+            "target_write": false
+          }
+        },
+        {
+          "event_id": "migration-TX-105",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-105",
+            "external_id": "TX-105",
+            "source_version": 1,
+            "input_hash": "87102b9bc3bebf349a613882420a706094196cadf3f37d6f027eb76c3f1bdfe6",
+            "target": {
+              "external_id": "TX-105",
+              "version": 1,
+              "customer_id": "SYN-C1",
+              "product_id": "B-P1",
+              "quantity": 2,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-106",
+          "result": "missing_mapping",
+          "evidence": {
+            "event_id": "migration-TX-106",
+            "external_id": "TX-106",
+            "source_version": 1,
+            "input_hash": "8faa025b1752f66fae54574abc3eef96382232b574081800b0edca6766023acd",
+            "mapping_kind": "product",
+            "source_value": "SKU-X99",
+            "expected": "mapping exists",
+            "actual": "missing",
+            "target_write": false
+          }
+        }
+      ]
+    },
+    "financials": {
+      "TX-101": {
+        "transaction_id": "TX-101",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-102": {
+        "transaction_id": "TX-102",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-103": {
+        "transaction_id": "TX-103",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "0.00",
+        "net_amount": "0.00",
+        "tax_amount": "0.00",
+        "normalized_status": "cancelled",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-105": {
+        "transaction_id": "TX-105",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      }
+    }
+  },
+  "after": {
+    "run_id": "MIG-c30817e904f7f5f2c219a92991d08e33",
+    "source": "migration",
+    "parent_run": "MIG-8edf782377f544e4e2375315ec0bbc66",
+    "timestamp": "2026-10-01T09:05:51.803Z",
+    "ruleset": "migration/1.0",
+    "synthetic": true,
+    "stage": "reconciled",
+    "overall_status": "PASS",
+    "filename": "synthetic-orders.csv",
+    "content": "transaction_id,customer_code,transaction_date,gross_amount_raw,net_amount_raw,tax_amount_raw,status,country,note,sku,quantity\r\nTX-101,C-001,15.09.2026,\"100,00\",\"80,00\",\"20,00\",SALE, pl ,  ,SKU-001,1\r\nTX-102,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-001,2\r\nTX-103,C-002,15.09.2026,\"0,00\",\"0,00\",\"0,00\",CANCEL, pl ,  ,SKU-001,3\r\nTX-104,C-001,15.09.2026,\"1 234,50\",\"1 000,00\",\"234,50\",SALE, pl ,  ,SKU-X99,1\r\nTX-105,C-001,15.09.2026,\"100,00\",\"80,00\",\"20,00\",SALE, pl ,  ,SKU-001,2\r\nTX-106,C-002,15.09.2026,50.00,40.00,10.00,SALE, pl ,  ,SKU-X99,3\r\n",
+    "input_sha256": "b51cc8c7acf81feaf345fddf05f2da09ab66fdd3081343c8e932429a626ce82b",
+    "rows": [
+      {
+        "transaction_id": "TX-101",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "100,00",
+        "net_amount_raw": "80,00",
+        "tax_amount_raw": "20,00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "1"
+      },
+      {
+        "transaction_id": "TX-102",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "50.00",
+        "net_amount_raw": "40.00",
+        "tax_amount_raw": "10.00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "2"
+      },
+      {
+        "transaction_id": "TX-103",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "0,00",
+        "net_amount_raw": "0,00",
+        "tax_amount_raw": "0,00",
+        "status": "CANCEL",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "3"
+      },
+      {
+        "transaction_id": "TX-104",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "1 234,50",
+        "net_amount_raw": "1 000,00",
+        "tax_amount_raw": "234,50",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-X99",
+        "quantity": "1"
+      },
+      {
+        "transaction_id": "TX-105",
+        "customer_code": "C-001",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "100,00",
+        "net_amount_raw": "80,00",
+        "tax_amount_raw": "20,00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-001",
+        "quantity": "2"
+      },
+      {
+        "transaction_id": "TX-106",
+        "customer_code": "C-002",
+        "transaction_date": "15.09.2026",
+        "gross_amount_raw": "50.00",
+        "net_amount_raw": "40.00",
+        "tax_amount_raw": "10.00",
+        "status": "SALE",
+        "country": " pl ",
+        "note": "  ",
+        "sku": "SKU-X99",
+        "quantity": "3"
+      }
+    ],
+    "validation": {
+      "accepted": 6,
+      "rejected": 0,
+      "failures": [],
+      "lineage": [
+        {
+          "record_id": "TX-101",
+          "target_field": "transaction_id",
+          "target_value": "TX-101",
+          "expected_value": "TX-101",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-101",
+          "typed_value": "TX-101",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-101",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "gross_amount",
+          "target_value": "100.00",
+          "expected_value": "100.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "100.00",
+          "typed_value": "100.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "100,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "net_amount",
+          "target_value": "80.00",
+          "expected_value": "80.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "80.00",
+          "typed_value": "80.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "80,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "tax_amount",
+          "target_value": "20.00",
+          "expected_value": "20.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "20.00",
+          "typed_value": "20.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "20,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-101",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 1,
+            "position_kind": "record index",
+            "record_id": "TX-101",
+            "input_hash": "98934604b2a210d7ef9db7c988269a327bd2b871e696460a821ba17994ccef95"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "transaction_id",
+          "target_value": "TX-102",
+          "expected_value": "TX-102",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-102",
+          "typed_value": "TX-102",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-102",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "gross_amount",
+          "target_value": "50.00",
+          "expected_value": "50.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "50.00",
+          "typed_value": "50.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "50.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "net_amount",
+          "target_value": "40.00",
+          "expected_value": "40.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "40.00",
+          "typed_value": "40.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "40.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "tax_amount",
+          "target_value": "10.00",
+          "expected_value": "10.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "10.00",
+          "typed_value": "10.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "10.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-102",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 2,
+            "position_kind": "record index",
+            "record_id": "TX-102",
+            "input_hash": "7066434f798c29c745e8d3fe4184020dcdc390b252bb2d2619bec1780a19aad9"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "transaction_id",
+          "target_value": "TX-103",
+          "expected_value": "TX-103",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-103",
+          "typed_value": "TX-103",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-103",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "gross_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "net_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "tax_amount",
+          "target_value": "0.00",
+          "expected_value": "0.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "0.00",
+          "typed_value": "0.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "0,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "normalized_status",
+          "target_value": "cancelled",
+          "expected_value": "cancelled",
+          "transformation": "map_status",
+          "normalized_value": "CANCEL",
+          "typed_value": "cancelled",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "CANCEL",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-103",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 3,
+            "position_kind": "record index",
+            "record_id": "TX-103",
+            "input_hash": "1cce3b4f89199f9dcf62b89c8a2c94e22a341b8d3aa69629e3d03427d245b4de"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "transaction_id",
+          "target_value": "TX-104",
+          "expected_value": "TX-104",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-104",
+          "typed_value": "TX-104",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-104",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "gross_amount",
+          "target_value": "1234.50",
+          "expected_value": "1234.50",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "1234.50",
+          "typed_value": "1234.50",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "1 234,50",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "net_amount",
+          "target_value": "1000.00",
+          "expected_value": "1000.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "1000.00",
+          "typed_value": "1000.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "1 000,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "tax_amount",
+          "target_value": "234.50",
+          "expected_value": "234.50",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "234.50",
+          "typed_value": "234.50",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "234,50",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-104",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 4,
+            "position_kind": "record index",
+            "record_id": "TX-104",
+            "input_hash": "3b62ebcdd89d6cc8c3583e6d07ef59f711e593e388c349fac6867bd83cc743e7"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "transaction_id",
+          "target_value": "TX-105",
+          "expected_value": "TX-105",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-105",
+          "typed_value": "TX-105",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-105",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "customer_id",
+          "target_value": "SYN-C1",
+          "expected_value": "SYN-C1",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-001",
+          "typed_value": "SYN-C1",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-001",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "gross_amount",
+          "target_value": "100.00",
+          "expected_value": "100.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "100.00",
+          "typed_value": "100.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "100,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "net_amount",
+          "target_value": "80.00",
+          "expected_value": "80.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "80.00",
+          "typed_value": "80.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "80,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "tax_amount",
+          "target_value": "20.00",
+          "expected_value": "20.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "20.00",
+          "typed_value": "20.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "20,00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-105",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 5,
+            "position_kind": "record index",
+            "record_id": "TX-105",
+            "input_hash": "b537e4867ff4c3a68e072a7ad261bf7c847f1e859bf9658985af4104fc2a3628"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "transaction_id",
+          "target_value": "TX-106",
+          "expected_value": "TX-106",
+          "transformation": "trim_identifier",
+          "normalized_value": "TX-106",
+          "typed_value": "TX-106",
+          "typed_type": "string",
+          "source_field": "transaction_id",
+          "raw_value": "TX-106",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "customer_id",
+          "target_value": "SYN-C2",
+          "expected_value": "SYN-C2",
+          "transformation": "lookup_customer",
+          "normalized_value": "C-002",
+          "typed_value": "SYN-C2",
+          "typed_type": "string",
+          "source_field": "customer_code",
+          "raw_value": "C-002",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "transaction_date",
+          "target_value": "2026-09-15",
+          "expected_value": "2026-09-15",
+          "transformation": "normalize_date",
+          "normalized_value": "2026-09-15",
+          "typed_value": "2026-09-15",
+          "typed_type": "date",
+          "source_field": "transaction_date",
+          "raw_value": "15.09.2026",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "gross_amount",
+          "target_value": "50.00",
+          "expected_value": "50.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "50.00",
+          "typed_value": "50.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "gross_amount_raw",
+          "raw_value": "50.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "net_amount",
+          "target_value": "40.00",
+          "expected_value": "40.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "40.00",
+          "typed_value": "40.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "net_amount_raw",
+          "raw_value": "40.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "tax_amount",
+          "target_value": "10.00",
+          "expected_value": "10.00",
+          "transformation": "normalize_decimal_pl",
+          "normalized_value": "10.00",
+          "typed_value": "10.00",
+          "typed_type": "Decimal(2)",
+          "source_field": "tax_amount_raw",
+          "raw_value": "10.00",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "normalized_status",
+          "target_value": "posted",
+          "expected_value": "posted",
+          "transformation": "map_status",
+          "normalized_value": "SALE",
+          "typed_value": "posted",
+          "typed_type": "enum",
+          "source_field": "status",
+          "raw_value": "SALE",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "country_code",
+          "target_value": "PL",
+          "expected_value": "PL",
+          "transformation": "uppercase_country",
+          "normalized_value": "PL",
+          "typed_value": "PL",
+          "typed_type": "enum",
+          "source_field": "country",
+          "raw_value": " pl ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        },
+        {
+          "record_id": "TX-106",
+          "target_field": "note",
+          "target_value": null,
+          "expected_value": null,
+          "transformation": "empty_to_null",
+          "normalized_value": null,
+          "typed_value": null,
+          "typed_type": "string|null",
+          "source_field": "note",
+          "raw_value": "  ",
+          "source": {
+            "file": "synthetic-orders.csv",
+            "row": 6,
+            "position_kind": "record index",
+            "record_id": "TX-106",
+            "input_hash": "2ad4fccc78ff96d0032023d954bfd18f7a08eb5b06d5094bb8e5f1b31a1b85c1"
+          },
+          "controlled_change": false
+        }
+      ],
+      "normalized": [
+        {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-104",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "1234.50",
+          "net_amount": "1000.00",
+          "tax_amount": "234.50",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        },
+        {
+          "transaction_id": "TX-106",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null
+        }
+      ]
+    },
+    "mappings": [
+      {
+        "kind": "customer",
+        "source": "C-001",
+        "target": "SYN-C1"
+      },
+      {
+        "kind": "customer",
+        "source": "C-002",
+        "target": "SYN-C2"
+      },
+      {
+        "kind": "product",
+        "source": "SKU-001",
+        "target": "B-P1"
+      },
+      {
+        "kind": "product",
+        "source": "SKU-X99",
+        "target": "B-P99"
+      }
+    ],
+    "exceptions": [],
+    "target": [
+      {
+        "transaction_id": "TX-101",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-101",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 1,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-102",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-102",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 2,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-103",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "0.00",
+        "net_amount": "0.00",
+        "tax_amount": "0.00",
+        "normalized_status": "cancelled",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-103",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 3,
+        "status": "cancelled"
+      },
+      {
+        "transaction_id": "TX-104",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "1234.50",
+        "net_amount": "1000.00",
+        "tax_amount": "234.50",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-104",
+        "version": 1,
+        "product_id": "B-P99",
+        "quantity": 1,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-105",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-105",
+        "version": 1,
+        "product_id": "B-P1",
+        "quantity": 2,
+        "status": "ready"
+      },
+      {
+        "transaction_id": "TX-106",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null,
+        "external_id": "TX-106",
+        "version": 1,
+        "product_id": "B-P99",
+        "quantity": 3,
+        "status": "ready"
+      }
+    ],
+    "comparisons": [
+      {
+        "record": "TX-101",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-101",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-101",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-101",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-102",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-102",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-102",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-102",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-103",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-103",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "actual": {
+          "transaction_id": "TX-103",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "0.00",
+          "net_amount": "0.00",
+          "tax_amount": "0.00",
+          "normalized_status": "cancelled",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-103",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-104",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-104",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "1234.50",
+          "net_amount": "1000.00",
+          "tax_amount": "234.50",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-104",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-104",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "1234.50",
+          "net_amount": "1000.00",
+          "tax_amount": "234.50",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-104",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-105",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-105",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-105",
+          "customer_id": "SYN-C1",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "100.00",
+          "net_amount": "80.00",
+          "tax_amount": "20.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-105",
+          "version": 1,
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "differences": {}
+      },
+      {
+        "record": "TX-106",
+        "status": "MATCH",
+        "expected": {
+          "transaction_id": "TX-106",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-106",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 3,
+          "status": "ready"
+        },
+        "actual": {
+          "transaction_id": "TX-106",
+          "customer_id": "SYN-C2",
+          "transaction_date": "2026-09-15",
+          "gross_amount": "50.00",
+          "net_amount": "40.00",
+          "tax_amount": "10.00",
+          "normalized_status": "posted",
+          "country_code": "PL",
+          "note": null,
+          "external_id": "TX-106",
+          "version": 1,
+          "product_id": "B-P99",
+          "quantity": 3,
+          "status": "ready"
+        },
+        "differences": {}
+      }
+    ],
+    "totals": {
+      "source_count": 6,
+      "target_count": 6,
+      "source_gross": "1534.50",
+      "target_gross": "1534.50",
+      "currency": "PLN"
+    },
+    "attempts": [
+      {
+        "phase": "migration",
+        "selected": [
+          "TX-101",
+          "TX-102",
+          "TX-103",
+          "TX-104",
+          "TX-105",
+          "TX-106"
+        ],
+        "skipped": [],
+        "writes": 4,
+        "results": [
+          {
+            "record": "TX-101",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-102",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-103",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-104",
+            "result": "missing_mapping",
+            "target_write": false
+          },
+          {
+            "record": "TX-105",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-106",
+            "result": "missing_mapping",
+            "target_write": false
+          }
+        ]
+      },
+      {
+        "phase": "replay",
+        "selected": [
+          "TX-104",
+          "TX-106"
+        ],
+        "skipped": [
+          "TX-101",
+          "TX-102",
+          "TX-103",
+          "TX-105"
+        ],
+        "writes": 2,
+        "results": [
+          {
+            "record": "TX-104",
+            "result": "created",
+            "target_write": true
+          },
+          {
+            "record": "TX-106",
+            "result": "created",
+            "target_write": true
+          }
+        ]
+      }
+    ],
+    "audit": [
+      {
+        "action": "load",
+        "run_id": "MIG-ed5de548-45a2-460d-9040-a26f85f54cbb",
+        "timestamp": "2026-10-01T09:05:51.796Z",
+        "detail": "6 synthetic order lines; target is empty"
+      },
+      {
+        "action": "validate",
+        "run_id": "MIG-b66e0e5773bb97f41e2c3b86574afc49",
+        "timestamp": "2026-10-01T09:05:51.796Z",
+        "detail": "6 valid; 0 rejected"
+      },
+      {
+        "action": "mapping",
+        "run_id": "MIG-602068c9b483c30ea4a00b6fde0b2ff5",
+        "timestamp": "2026-10-01T09:05:51.799Z",
+        "detail": "Removed SKU-X99 → B-P99 before migration"
+      },
+      {
+        "action": "migrate",
+        "run_id": "MIG-1e9018e25208b726ee35624e7d31f597",
+        "timestamp": "2026-10-01T09:05:51.799Z",
+        "detail": "4 written; 2 exceptions"
+      },
+      {
+        "action": "reconcile",
+        "run_id": "MIG-6c06a7ae14b25ccec3a48f0a81d8fbf8",
+        "timestamp": "2026-10-01T09:05:51.801Z",
+        "detail": "FAIL: 2 differences"
+      },
+      {
+        "action": "correct",
+        "run_id": "MIG-a8138e0831309c03ab1665c0a5a73f4c",
+        "timestamp": "2026-10-01T09:05:51.802Z",
+        "detail": "Restored approved SKU-X99 → B-P99 mapping. No target writes."
+      },
+      {
+        "action": "replay",
+        "run_id": "MIG-8edf782377f544e4e2375315ec0bbc66",
+        "timestamp": "2026-10-01T09:05:51.802Z",
+        "detail": "Only failed records selected: TX-104, TX-106; 4 skipped"
+      },
+      {
+        "action": "reconcile",
+        "run_id": "MIG-c30817e904f7f5f2c219a92991d08e33",
+        "timestamp": "2026-10-01T09:05:51.803Z",
+        "detail": "PASS: 0 differences"
+      }
+    ],
+    "checks": [
+      {
+        "rule": "record_count",
+        "expected": 6,
+        "actual": 6,
+        "status": "PASS"
+      },
+      {
+        "rule": "gross_total_PLN",
+        "expected": "1534.50",
+        "actual": "1534.50",
+        "status": "PASS"
+      },
+      {
+        "rule": "field_differences",
+        "expected": 0,
+        "actual": 0,
+        "status": "PASS"
+      },
+      {
+        "rule": "open_exceptions",
+        "expected": 0,
+        "actual": 0,
+        "status": "PASS"
+      },
+      {
+        "rule": "one_write_per_target",
+        "expected": 6,
+        "actual": 6,
+        "status": "PASS"
+      },
+      {
+        "rule": "failed_only_replay",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      }
+    ],
+    "state": {
+      "mappings": [
+        {
+          "kind": "customer",
+          "source": "C-001",
+          "target": "SYN-C1"
+        },
+        {
+          "kind": "customer",
+          "source": "C-002",
+          "target": "SYN-C2"
+        },
+        {
+          "kind": "product",
+          "source": "SKU-001",
+          "target": "B-P1"
+        },
+        {
+          "kind": "product",
+          "source": "SKU-X99",
+          "target": "B-P99"
+        }
+      ],
+      "entities": [
+        {
+          "kind": "customer",
+          "id": "SYN-C1",
+          "payload": {
+            "name": "Synthetic C-001"
+          }
+        },
+        {
+          "kind": "customer",
+          "id": "SYN-C2",
+          "payload": {
+            "name": "Synthetic C-002"
+          }
+        },
+        {
+          "kind": "product",
+          "id": "B-P1",
+          "payload": {
+            "name": "Synthetic SKU-001"
+          }
+        },
+        {
+          "kind": "product",
+          "id": "B-P99",
+          "payload": {
+            "name": "Synthetic SKU-X99"
+          }
+        }
+      ],
+      "events": {
+        "migration-TX-101": {
+          "hash": "1c1867480856acca0fc7993e888e8666de46f650a0c4834056e4359d93db992d",
+          "input": {
+            "event_id": "migration-TX-101",
+            "external_id": "TX-101",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-001",
+            "quantity": 1,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-102": {
+          "hash": "18afc10b2b476144bb52f8cf27ac82ef443fe1216bd58bfe5cf7006413a98f42",
+          "input": {
+            "event_id": "migration-TX-102",
+            "external_id": "TX-102",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-001",
+            "quantity": 2,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-103": {
+          "hash": "3de590222fab22cdea65d14cc12cca7ca93c96412a4d6ead3e9f64cbc3fc9f95",
+          "input": {
+            "event_id": "migration-TX-103",
+            "external_id": "TX-103",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-001",
+            "quantity": 3,
+            "status": "cancelled"
+          },
+          "status": "applied"
+        },
+        "migration-TX-104": {
+          "hash": "0f9c4b467e675a23d82a61073d27c8615bbf9d373c3107e6b94c6ab27c3d54d1",
+          "input": {
+            "event_id": "migration-TX-104",
+            "external_id": "TX-104",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-X99",
+            "quantity": 1,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-105": {
+          "hash": "87102b9bc3bebf349a613882420a706094196cadf3f37d6f027eb76c3f1bdfe6",
+          "input": {
+            "event_id": "migration-TX-105",
+            "external_id": "TX-105",
+            "version": 1,
+            "customer": "C-001",
+            "sku": "SKU-001",
+            "quantity": 2,
+            "status": "ready"
+          },
+          "status": "applied"
+        },
+        "migration-TX-106": {
+          "hash": "8faa025b1752f66fae54574abc3eef96382232b574081800b0edca6766023acd",
+          "input": {
+            "event_id": "migration-TX-106",
+            "external_id": "TX-106",
+            "version": 1,
+            "customer": "C-002",
+            "sku": "SKU-X99",
+            "quantity": 3,
+            "status": "ready"
+          },
+          "status": "applied"
+        }
+      },
+      "targets": {
+        "TX-101": {
+          "external_id": "TX-101",
+          "version": 1,
+          "customer_id": "SYN-C1",
+          "product_id": "B-P1",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "TX-102": {
+          "external_id": "TX-102",
+          "version": 1,
+          "customer_id": "SYN-C2",
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "TX-103": {
+          "external_id": "TX-103",
+          "version": 1,
+          "customer_id": "SYN-C2",
+          "product_id": "B-P1",
+          "quantity": 3,
+          "status": "cancelled"
+        },
+        "TX-105": {
+          "external_id": "TX-105",
+          "version": 1,
+          "customer_id": "SYN-C1",
+          "product_id": "B-P1",
+          "quantity": 2,
+          "status": "ready"
+        },
+        "TX-104": {
+          "external_id": "TX-104",
+          "version": 1,
+          "customer_id": "SYN-C1",
+          "product_id": "B-P99",
+          "quantity": 1,
+          "status": "ready"
+        },
+        "TX-106": {
+          "external_id": "TX-106",
+          "version": 1,
+          "customer_id": "SYN-C2",
+          "product_id": "B-P99",
+          "quantity": 3,
+          "status": "ready"
+        }
+      },
+      "history": [
+        {
+          "event_id": "customer/SYN-C1",
+          "result": "created",
+          "evidence": {
+            "entity": "customer",
+            "target_id": "SYN-C1",
+            "payload": {
+              "name": "Synthetic C-001"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "customer/SYN-C2",
+          "result": "created",
+          "evidence": {
+            "entity": "customer",
+            "target_id": "SYN-C2",
+            "payload": {
+              "name": "Synthetic C-002"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "product/B-P1",
+          "result": "created",
+          "evidence": {
+            "entity": "product",
+            "target_id": "B-P1",
+            "payload": {
+              "name": "Synthetic SKU-001"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "product/B-P99",
+          "result": "created",
+          "evidence": {
+            "entity": "product",
+            "target_id": "B-P99",
+            "payload": {
+              "name": "Synthetic SKU-X99"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-101",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-101",
+            "external_id": "TX-101",
+            "source_version": 1,
+            "input_hash": "1c1867480856acca0fc7993e888e8666de46f650a0c4834056e4359d93db992d",
+            "target": {
+              "external_id": "TX-101",
+              "version": 1,
+              "customer_id": "SYN-C1",
+              "product_id": "B-P1",
+              "quantity": 1,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-102",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-102",
+            "external_id": "TX-102",
+            "source_version": 1,
+            "input_hash": "18afc10b2b476144bb52f8cf27ac82ef443fe1216bd58bfe5cf7006413a98f42",
+            "target": {
+              "external_id": "TX-102",
+              "version": 1,
+              "customer_id": "SYN-C2",
+              "product_id": "B-P1",
+              "quantity": 2,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-103",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-103",
+            "external_id": "TX-103",
+            "source_version": 1,
+            "input_hash": "3de590222fab22cdea65d14cc12cca7ca93c96412a4d6ead3e9f64cbc3fc9f95",
+            "target": {
+              "external_id": "TX-103",
+              "version": 1,
+              "customer_id": "SYN-C2",
+              "product_id": "B-P1",
+              "quantity": 3,
+              "status": "cancelled"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-104",
+          "result": "missing_mapping",
+          "evidence": {
+            "event_id": "migration-TX-104",
+            "external_id": "TX-104",
+            "source_version": 1,
+            "input_hash": "0f9c4b467e675a23d82a61073d27c8615bbf9d373c3107e6b94c6ab27c3d54d1",
+            "mapping_kind": "product",
+            "source_value": "SKU-X99",
+            "expected": "mapping exists",
+            "actual": "missing",
+            "target_write": false
+          }
+        },
+        {
+          "event_id": "migration-TX-105",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-105",
+            "external_id": "TX-105",
+            "source_version": 1,
+            "input_hash": "87102b9bc3bebf349a613882420a706094196cadf3f37d6f027eb76c3f1bdfe6",
+            "target": {
+              "external_id": "TX-105",
+              "version": 1,
+              "customer_id": "SYN-C1",
+              "product_id": "B-P1",
+              "quantity": 2,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-106",
+          "result": "missing_mapping",
+          "evidence": {
+            "event_id": "migration-TX-106",
+            "external_id": "TX-106",
+            "source_version": 1,
+            "input_hash": "8faa025b1752f66fae54574abc3eef96382232b574081800b0edca6766023acd",
+            "mapping_kind": "product",
+            "source_value": "SKU-X99",
+            "expected": "mapping exists",
+            "actual": "missing",
+            "target_write": false
+          }
+        },
+        {
+          "event_id": "migration-TX-104",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-104",
+            "external_id": "TX-104",
+            "source_version": 1,
+            "input_hash": "0f9c4b467e675a23d82a61073d27c8615bbf9d373c3107e6b94c6ab27c3d54d1",
+            "target": {
+              "external_id": "TX-104",
+              "version": 1,
+              "customer_id": "SYN-C1",
+              "product_id": "B-P99",
+              "quantity": 1,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        },
+        {
+          "event_id": "migration-TX-106",
+          "result": "created",
+          "evidence": {
+            "event_id": "migration-TX-106",
+            "external_id": "TX-106",
+            "source_version": 1,
+            "input_hash": "8faa025b1752f66fae54574abc3eef96382232b574081800b0edca6766023acd",
+            "target": {
+              "external_id": "TX-106",
+              "version": 1,
+              "customer_id": "SYN-C2",
+              "product_id": "B-P99",
+              "quantity": 3,
+              "status": "ready"
+            },
+            "target_write": true
+          }
+        }
+      ]
+    },
+    "financials": {
+      "TX-101": {
+        "transaction_id": "TX-101",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-102": {
+        "transaction_id": "TX-102",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-103": {
+        "transaction_id": "TX-103",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "0.00",
+        "net_amount": "0.00",
+        "tax_amount": "0.00",
+        "normalized_status": "cancelled",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-105": {
+        "transaction_id": "TX-105",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "100.00",
+        "net_amount": "80.00",
+        "tax_amount": "20.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-104": {
+        "transaction_id": "TX-104",
+        "customer_id": "SYN-C1",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "1234.50",
+        "net_amount": "1000.00",
+        "tax_amount": "234.50",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      },
+      "TX-106": {
+        "transaction_id": "TX-106",
+        "customer_id": "SYN-C2",
+        "transaction_date": "2026-09-15",
+        "gross_amount": "50.00",
+        "net_amount": "40.00",
+        "tax_amount": "10.00",
+        "normalized_status": "posted",
+        "country_code": "PL",
+        "note": null
+      }
+    }
+  }
+}
