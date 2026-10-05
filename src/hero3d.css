@@ -62,3 +62,9 @@ body:has(.portfolio-home) .site-header--editorial .language-switch a[aria-curren
 
 .hero-webgl{touch-action:pan-y pinch-zoom}
 .hero-touch-hint{font-size:11px;line-height:1.5}
+.hero-assembly-hint{font-size:11px;line-height:1.5;opacity:.72;transition:opacity .5s}
+.hero-material:has([data-interaction-used=true]) .hero-assembly-hint{opacity:.3}
+.hero-webgl:focus-visible{outline:none}
+.hero-material:has(.hero-webgl:focus-visible) .hero-assembly-hint{opacity:1;text-decoration:underline;text-decoration-color:var(--scene-edge,#a9c9bf);text-underline-offset:5px}
+.hero-assembly-help{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(min-width:761px) and (pointer:fine){.hero-3d-controls{flex-wrap:wrap;gap:8px 16px}.hero-webgl{user-select:none}}

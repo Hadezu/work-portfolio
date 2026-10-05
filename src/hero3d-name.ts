@@ -1,12 +1,13 @@
 import * as T from 'three';
 import {FontLoader} from 'three/addons/loaders/FontLoader.js';
-import {identityScore,identityOrbit,IDENTITY_CYCLE_SECONDS} from './hero-identity-score';
+import {identityScore,identityOrbit,identityPlaybackTime,IDENTITY_CYCLE_SECONDS} from './hero-identity-score';
 import fontData from './hero-name-typeface.json';
 import type {SculptureFactory} from './hero3d-scene';
+import {createAssemblyInteraction} from './hero-assembly-interaction';
 
 import {equalizeTriangles,identityEase as ease,fragmentTiming} from './hero-identity-morph';
-/** Ninety-six seconds: fragments → letters → name → work. Decorative only. */
-export const createName:SculptureFactory=({assembly,camera,key,edge,host})=>{
+/** One continuous score: fragments → letters → name → work. Decorative only. */
+export const createName:SculptureFactory=({assembly,camera,key,edge,host,interactive})=>{
  const font=new FontLoader().parse(fontData),pl=document.documentElement.lang==='pl';
  const groups=[['IVAN','MATIUSHKIN'],pl?['OPROGRAMOWANIE','AUTOMATYZACJA']:['CUSTOM SOFTWARE','AUTOMATION']].map((words,gi)=>{
   const group=new T.Group();assembly.add(group);
@@ -60,7 +61,8 @@ export const createName:SculptureFactory=({assembly,camera,key,edge,host})=>{
  const properties=['bg','halo','ink','accent','button','edge'];
  const pearl=new T.Color('#fff3e5'),reflection=new T.Color();
  let lastPalette='';
- return{layout(time,x,y){const score=identityScore(time),{t,palette}=score;
+ const interaction=interactive?createAssemblyInteraction(host,assembly,camera,pool):null;
+ return{layout(time,x,y){const realTime=time;time=identityPlaybackTime(time,interactive);const frame=interaction?.frame(time,x,y);if(frame){time=frame.time;x=frame.x;y=frame.y;}const score=identityScore(time),{t,palette}=score;
   // The CSS scene and physical lights share the same paused/visibility-aware clock.
   const stamp=Object.values(palette).join('');
   if(stamp!==lastPalette){for(const el of [surface,header])if(el)for(const prop of properties)el.style.setProperty('--scene-'+prop,palette[prop as keyof typeof palette]);lastPalette=stamp;}
@@ -101,5 +103,6 @@ export const createName:SculptureFactory=({assembly,camera,key,edge,host})=>{
   host.dataset.orbitYaw=(orbit.yaw*180/Math.PI).toFixed(1);host.dataset.orbitPitch=(orbit.pitch*180/Math.PI).toFixed(1);
   host.dataset.artwork='fragmented-identity';host.dataset.cycleTime=t.toFixed(2);host.dataset.sculpturePhase=t<24?'letters':t<34?'name':t<44?'identity':t<65?'transform':t<73?'work-hold':'release';
   host.dataset.scenePalette=palette.bg;host.dataset.emergence=score.emergence.toFixed(3);host.dataset.unfold=score.unfold.toFixed(3);host.dataset.pointerX=x.toFixed(3);host.dataset.pointerY=y.toFixed(3);host.dataset.fragmentCount=String(count);host.dataset.lightSweep=light.toFixed(2);
- },dispose(){for(const el of [surface,header])if(el)for(const prop of properties)el.style.removeProperty('--scene-'+prop);pool.forEach(p=>p.mesh.geometry.dispose());groups[0].materials.forEach(m=>m.dispose());sweep.dispose();}};
+  interaction?.apply(realTime);
+ },setPaused(value){interaction?.setPaused(value);},dispose(){interaction?.dispose();for(const el of [surface,header])if(el)for(const prop of properties)el.style.removeProperty('--scene-'+prop);pool.forEach(p=>p.mesh.geometry.dispose());groups[0].materials.forEach(m=>m.dispose());sweep.dispose();}};
 };

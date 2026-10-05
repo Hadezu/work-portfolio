@@ -1,6 +1,8 @@
 import {identityEase as ease} from './hero-identity-morph';
 /** Decorative colour/pose score, in seconds. No business status is encoded here. */
 export const IDENTITY_CYCLE_SECONDS=96;
+// Desktop completes the same continuous score in 40 s; mobile keeps its original pace.
+export const identityPlaybackTime=(seconds:number,interactive:boolean)=>seconds*(interactive?2.4:1);
 const colours = [
  {at:0,bg:'#112b2c',halo:'#214547',ink:'#f4f3eb',accent:'#e6b18a',button:'#e4e8da',edge:'#a9c9bf'},
  {at:24,bg:'#20322e',halo:'#3c5146',ink:'#f5f3e9',accent:'#edc6a6',button:'#e7e6d5',edge:'#bdcdb5'},

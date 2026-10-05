@@ -9,7 +9,7 @@ Inspectable source for [work.matiushkin.com](https://work.matiushkin.com/en): a 
 | Need | Smallest relevant example | Source to inspect | Boundary |
 | --- | --- | --- | --- |
 | React/TypeScript interface or component | [Homepage](https://work.matiushkin.com/en) | `src/PortfolioHome.tsx`, `src/TaskFit.tsx` | Independent interface, no commercial frontend history claim |
-| Interactive 3D component | Homepage hero | `src/hero3d-scene.ts`, other `hero3d-*` modules | Three.js/WebGL browser scene, not a game engine or CAD product |
+| Interactive 3D component | Homepage hero: grab a fragment while the assembly continues | `src/hero3d-scene.ts`, `src/hero-assembly-*` | Three.js/WebGL, pointer/keyboard interaction and bounded spring response; decorative behavior, not autonomous AI or a CAD product |
 | CSV import and reconciliation | [Migration](https://work.matiushkin.com/en/proof/migration) | `src/migration-*`, `worker/native/` | Controlled target, not a live ERP migration |
 | API contract and failure tests | [API tests](https://work.matiushkin.com/en/api-tests) | `src/api-contract.ts`, `src/api-test-pack.ts`, `worker/index.ts` | Explicit synthetic endpoint faults; replay response alone is not durable production idempotency |
 | Reporting discrepancies | [Revenue BI](https://work.matiushkin.com/en/proof/revenue-bi) | `src/revenue-*`, `worker/native/` | Synthetic EUR data, not accounting certification or Power BI delivery |
@@ -44,6 +44,8 @@ npm run test:e2e
 ```
 
 The default browser check covers the local entry point, bilingual routes, measured API results, migration recovery and disabled external actions. Other inherited browser specifications are retained for inspection but are not all part of this local distribution's CI: some target production services or historical copy. See [verification](docs/VERIFICATION.md) for actual executed scope.
+
+For the separate adaptive-hero suite, install full Chromium (`npx playwright install chromium`), start the local app on port 4174, then run `npx playwright test --config playwright.hero.config.ts --workers=1`. `HERO_QA_URL` can point to another running preview. These tests block API requests and do not submit enquiries. This optional 19-case suite is separate from the default CI browser checks.
 
 ## Evidence and limitations
 

@@ -1,5 +1,15 @@
 # Local verification — 2026-10-04
 
+## Hero source update — 2026-10-05
+
+After copying the published adaptive-fragment modules into this curated distribution, `npm test` passed **677 tests in 33 files** and `npm run build` passed. The default local browser suite passed **7 Chromium scenarios**. No contact delivery or paid AI provider was enabled.
+
+The isolated production release of the same hero modules passed 39 focused unit tests and 19 full-Chromium interaction cases; three production smoke cases then passed. Coverage includes continuous motion while held, frontal centering, bounded deformation, one settle glint, spare wait/rejoin, repeated grabs/cancel, context recovery, mobile ambient-only behavior and reduced motion. This is scoped release evidence, not a full-site browser-suite or physical-device certification. One earlier development phase-wait timeout is retained as historical evidence; the unchanged full suite passed against the isolated production build.
+
+`playwright.hero.config.ts` exposes the 19-case suite separately. It needs full Chromium and a running preview; it is not part of the default seven-case CI browser job. GitHub Actions results must be checked against the exact commit, rather than inferred from these local passes.
+
+## Original curated baseline
+
 Environment: Windows, Node 24.15.0, npm 11.12.1. Dependencies installed independently with `npm ci` from the curated lockfile.
 
 | Check | Observed result |
