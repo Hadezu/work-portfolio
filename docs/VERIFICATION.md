@@ -4,7 +4,7 @@
 
 The standard `Verify local portfolio` workflow now runs both hero specification files, all **19** scenarios, after the existing seven browser scenarios. `playwright.hero.config.ts` starts and stops its own local build preview; no production URL or Cloudflare deployment is used. Install full Chromium with `npx playwright install chromium`, build, then run `npx playwright test --config playwright.hero.config.ts`. `HERO_QA_URL` remains an explicit override for a separately managed preview.
 
-Local Windows validation: build passed and **19/19 hero scenarios passed** in 2.6 minutes with the new configuration. An initial sandbox run lost its preview process; the complete run under the normal user account passed. CI retains JUnit, failure traces/videos and QA screenshots as `portfolio-browser-evidence`. Consult the Actions run for the exact commit for hosted CI evidence.
+Local Windows validation: build passed and **19/19 hero scenarios passed** in 2.6 minutes with the new configuration. An initial sandbox run lost its preview process; the complete run under the normal user account passed. CI retains JUnit, failure action/DOM traces and QA screenshots as `portfolio-browser-evidence`. Continuous video/screenshot tracing is disabled for this WebGL suite to avoid GPU readback overhead on shared CPU runners. The isolated CI browser explicitly selects [Chromium's SwiftShader renderer](https://chromium.googlesource.com/chromium/src/+/main/docs/gpu/swiftshader.md). This is functional browser verification, not a physical GPU/frame-rate benchmark. Consult the Actions run for the exact commit for hosted CI evidence.
 
 ## Hero source update — 2026-10-05
 
