@@ -38,14 +38,15 @@ Open the localhost URL printed by Vite. D1 runs locally. The runner selects the 
 ```sh
 npm test
 npm run build
-npx playwright install chromium --only-shell
+npx playwright install chromium
 npm run setup:local
 npm run test:e2e
+npx playwright test --config playwright.hero.config.ts
 ```
 
 The default browser check covers the local entry point, bilingual routes, measured API results, migration recovery and disabled external actions. Other inherited browser specifications are retained for inspection but are not all part of this local distribution's CI: some target production services or historical copy. See [verification](docs/VERIFICATION.md) for actual executed scope.
 
-For the separate adaptive-hero suite, install full Chromium (`npx playwright install chromium`), start the local app on port 4174, then run `npx playwright test --config playwright.hero.config.ts --workers=1`. `HERO_QA_URL` can point to another running preview. These tests block API requests and do not submit enquiries. This optional 19-case suite is separate from the default CI browser checks.
+The standard CI runs the seven default browser scenarios **and all 19 adaptive-hero scenarios**. The hero configuration starts and stops its own built preview on port 4174; `HERO_QA_URL` can explicitly select an already running preview. These tests block API requests and do not submit enquiries. CI uses lower raster density for its software WebGL renderer; this verifies behavior, not full-resolution GPU performance. [Successful hosted run on the published revision](https://github.com/Hadezu/work-portfolio/actions/runs/37421663110).
 
 ## Evidence and limitations
 
