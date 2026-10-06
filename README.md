@@ -1,5 +1,11 @@
 # Ivan Matiushkin — engineering portfolio
 
+<!-- portfolio-navigation:start -->
+[← Project index](https://github.com/Hadezu#selected-implementations) · [Business software portfolio](https://work.matiushkin.com/en) · [Describe a similar task](https://work.matiushkin.com/en/contact)
+
+**Review format:** Reproducible source distribution. The public website can include newer changes than this snapshot; local contact delivery and live inference are disabled.
+<!-- portfolio-navigation:end -->
+
 Inspectable source for [work.matiushkin.com](https://work.matiushkin.com/en): a bilingual React/TypeScript interface, a Three.js scene, and interactive integration/data demonstrations running on Cloudflare Workers and D1.
 
 **Independent work with synthetic/test data.** These examples demonstrate implemented mechanisms, not paid client history or certified vendor integrations. Built with Codex-assisted development; code, tests and limitations are available for review.
@@ -52,7 +58,7 @@ The standard CI runs the seven default browser scenarios **and all 19 adaptive-h
 
 - Unit tests cover validation, mapping, reconciliation, state transitions, permission rules and provider failure scenarios. Mocks and synthetic faults are explicitly identified.
 - API scenario duration is measured around execution and parsing. The UI displays the sum of scenario durations; parallel execution means it is not total wall-clock time or a reliability benchmark.
-- The production site has 48 sitemap routes (24 PL/EN pairs) and 13 interactive demonstrations at the source snapshot date. See [source provenance](SOURCE.md); this distribution is not byte-identical to the deployed release.
+- This published source snapshot has 48 sitemap routes (24 PL/EN pairs) and 13 interactive demonstrations at the source snapshot date. See [source provenance](SOURCE.md); this distribution is not byte-identical to the deployed release.
 - No secrets, CVs, prospect records or private repository history belong in this repository.
 - No deployment workflow is included. Production contact handling, provider access, migrations and operational requirements need separate review before any deployment.
 
