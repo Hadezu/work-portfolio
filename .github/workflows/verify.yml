@@ -5,7 +5,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -15,6 +15,16 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npx playwright install --with-deps chromium --only-shell
+      - run: npx playwright install --with-deps chromium
       - run: npm run setup:local
       - run: npm run test:e2e
+      - name: All 19 hero interaction and lifecycle scenarios
+        run: npx playwright test --config playwright.hero.config.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: portfolio-browser-evidence
+          path: |
+            test-results/
+            qa-artifacts/
+          retention-days: 14

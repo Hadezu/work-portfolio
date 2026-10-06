@@ -1,12 +1,18 @@
 # Local verification — 2026-10-04
 
+## Persistent hero acceptance gate — 2026-10-06
+
+The standard `Verify local portfolio` workflow now runs both hero specification files, all **19** scenarios, after the existing seven browser scenarios. `playwright.hero.config.ts` starts and stops its own local build preview; no production URL or Cloudflare deployment is used. Install full Chromium with `npx playwright install chromium`, build, then run `npx playwright test --config playwright.hero.config.ts`. `HERO_QA_URL` remains an explicit override for a separately managed preview.
+
+Local Windows validation: build passed and **19/19 hero scenarios passed** in 2.6 minutes with the new configuration. An initial sandbox run lost its preview process; the complete run under the normal user account passed. CI retains JUnit, failure traces/videos and QA screenshots as `portfolio-browser-evidence`. Consult the Actions run for the exact commit for hosted CI evidence.
+
 ## Hero source update — 2026-10-05
 
 After copying the published adaptive-fragment modules into this curated distribution, `npm test` passed **677 tests in 33 files** and `npm run build` passed. The default local browser suite passed **7 Chromium scenarios**. No contact delivery or paid AI provider was enabled.
 
 The isolated production release of the same hero modules passed 39 focused unit tests and 19 full-Chromium interaction cases; three production smoke cases then passed. Coverage includes continuous motion while held, frontal centering, bounded deformation, one settle glint, spare wait/rejoin, repeated grabs/cancel, context recovery, mobile ambient-only behavior and reduced motion. This is scoped release evidence, not a full-site browser-suite or physical-device certification. One earlier development phase-wait timeout is retained as historical evidence; the unchanged full suite passed against the isolated production build.
 
-`playwright.hero.config.ts` exposes the 19-case suite separately. It needs full Chromium and a running preview; it is not part of the default seven-case CI browser job. GitHub Actions results must be checked against the exact commit, rather than inferred from these local passes.
+At that historical release, the hero suite was separate from CI and needed an external preview. The 2026-10-06 gate above supersedes that setup. GitHub Actions results must be checked against the exact commit, rather than inferred from local passes.
 
 ## Original curated baseline
 
