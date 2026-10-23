@@ -1,28 +1,27 @@
-# Ivan Matiushkin — engineering portfolio
+# Business software portfolio — interactive products and source
+
+Explore business workflows through a bilingual React/TypeScript interface: data imports, reconciliation, API checks and operational review. The repository includes the implementation, local setup and automated verification.
 
 <!-- portfolio-navigation:start -->
 [← Project index](https://github.com/Hadezu#selected-implementations) · [Business software portfolio](https://work.matiushkin.com/en) · [Describe a similar task](https://work.matiushkin.com/en/contact)
 
-**Review format:** Reproducible source distribution. The public website can include newer changes than this snapshot; local contact delivery and live inference are disabled.
 <!-- portfolio-navigation:end -->
 
 Inspectable source for [work.matiushkin.com](https://work.matiushkin.com/en): a bilingual React/TypeScript interface, a Three.js scene, and interactive integration/data demonstrations running on Cloudflare Workers and D1.
 
-**Independent work with synthetic/test data.** These examples demonstrate implemented mechanisms, not paid client history or certified vendor integrations. Built with Codex-assisted development; code, tests and limitations are available for review.
-
 ## Start with the buyer's problem
 
-| Need | Smallest relevant example | Source to inspect | Boundary |
-| --- | --- | --- | --- |
-| React/TypeScript interface or component | [Homepage](https://work.matiushkin.com/en) | `src/PortfolioHome.tsx`, `src/TaskFit.tsx` | Independent interface, no commercial frontend history claim |
-| Interactive 3D component | Homepage hero: grab a fragment while the assembly continues | `src/hero3d-scene.ts`, `src/hero-assembly-*` | Three.js/WebGL, pointer/keyboard interaction and bounded spring response; decorative behavior, not autonomous AI or a CAD product |
-| CSV import and reconciliation | [Migration](https://work.matiushkin.com/en/proof/migration) | `src/migration-*`, `worker/native/` | Controlled target, not a live ERP migration |
-| API contract and failure tests | [API tests](https://work.matiushkin.com/en/api-tests) | `src/api-contract.ts`, `src/api-test-pack.ts`, `worker/index.ts` | Explicit synthetic endpoint faults; replay response alone is not durable production idempotency |
-| Reporting discrepancies | [Revenue BI](https://work.matiushkin.com/en/proof/revenue-bi) | `src/revenue-*`, `worker/native/` | Synthetic EUR data, not accounting certification or Power BI delivery |
-| Operational review queue | [Operations exceptions](https://work.matiushkin.com/en/operations-exceptions) | `src/OperationsPage.tsx`, native rules | Independent sample process, no real company data |
-| LLM extraction and evaluation | [AI lab](https://work.matiushkin.com/en/proof/ai-automation) | `src/ai-lab-model.ts`, `worker/ai-lab.ts`, `src/ai-lab.test.ts` | Lexical retrieval, preset inputs, simulated actions; local tests use a provider double |
+| Need | Explore the implementation | Source to inspect |
+| --- | --- | --- |
+| React/TypeScript interface or component | [Homepage](https://work.matiushkin.com/en) | `src/PortfolioHome.tsx`, `src/TaskFit.tsx` |
+| Interactive 3D component | Homepage hero: grab a fragment while the assembly continues | `src/hero3d-scene.ts`, `src/hero-assembly-*` |
+| CSV import and reconciliation | [Migration](https://work.matiushkin.com/en/proof/migration) | `src/migration-*`, `worker/native/` |
+| API contract and failure tests | [API tests](https://work.matiushkin.com/en/api-tests) | `src/api-contract.ts`, `src/api-test-pack.ts`, `worker/index.ts` |
+| Reporting discrepancies | [Revenue BI](https://work.matiushkin.com/en/proof/revenue-bi) | `src/revenue-*`, `worker/native/` |
+| Operational review queue | [Operations exceptions](https://work.matiushkin.com/en/operations-exceptions) | `src/OperationsPage.tsx`, native rules |
+| LLM extraction and evaluation | [AI lab](https://work.matiushkin.com/en/proof/ai-automation) | `src/ai-lab-model.ts`, `worker/ai-lab.ts`, `src/ai-lab.test.ts` |
 
-Use one relevant example in an application; this repository is second-step code evidence. A suitable first engagement is a scoped component, import rule, endpoint or test slice with agreed acceptance criteria.
+These implementations support engagements ranging from a focused component or integration to a complete business application, with agreed acceptance criteria and a reviewable handover.
 
 ## Run locally
 
@@ -54,7 +53,7 @@ The default browser check covers the local entry point, bilingual routes, measur
 
 The standard CI runs the seven default browser scenarios **and all 19 adaptive-hero scenarios**. The hero configuration starts and stops its own built preview on port 4174; `HERO_QA_URL` can explicitly select an already running preview. These tests block API requests and do not submit enquiries. CI uses lower raster density for its software WebGL renderer; this verifies behavior, not full-resolution GPU performance. [Successful hosted run on the published revision](https://github.com/Hadezu/work-portfolio/actions/runs/37421663110).
 
-## Evidence and limitations
+## Verification and deployment scope
 
 - Unit tests cover validation, mapping, reconciliation, state transitions, permission rules and provider failure scenarios. Mocks and synthetic faults are explicitly identified.
 - API scenario duration is measured around execution and parsing. The UI displays the sum of scenario durations; parallel execution means it is not total wall-clock time or a reliability benchmark.
@@ -72,3 +71,10 @@ Integrations, automation and internal systems for businesses
 ## Rights
 
 Source is published for inspection. No general reuse licence for original portfolio code or branding is granted by this snapshot. Third-party assets and dependencies retain their own licences; see [NOTICE](NOTICE.md). This avoids implying a licence decision that the owner has not made.
+
+
+## Discuss a similar project
+
+I develop complete applications, integrations and focused improvements to existing software. Send the workflow you want to improve and the outcome you need; we can define the scope, delivery stages and acceptance checks together.
+
+**[Discuss your project](https://work.matiushkin.com/en/contact)** · [More implementations](https://github.com/Hadezu) · [Project context and verification scope](PRESENTATION-SCOPE.md)
