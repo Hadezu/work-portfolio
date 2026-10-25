@@ -1,5 +1,5 @@
 import {useLocale} from './locale';
-const base='https://github.com/Hadezu/operations-desk-reliability/blob/codex/commercial-operations-expansion/docs/';
+const base='https://github.com/Hadezu/operations-desk-reliability/blob/main/docs/';
 export default function WorkflowExpansion(){
  const en=useLocale()==='en';
  const cards=en?[

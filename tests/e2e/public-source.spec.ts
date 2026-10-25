@@ -25,6 +25,7 @@ for (const locale of ['pl','en']) {
       await expect(section.locator('a')).toHaveCount(3);
       for (const file of ['ASSOCIATION.md','BOOKING.md','DELIVERY-RECOVERY.md']) {
         await expect(section.locator(`a[href$="/${file}"]`)).toBeVisible();
+        await expect(section.locator(`a[href$="/${file}"]`)).toHaveAttribute('href',`https://github.com/Hadezu/operations-desk-reliability/blob/main/docs/${file}`);
       }
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
     });
