@@ -15,3 +15,19 @@ test('API scenarios run against the local synthetic endpoints and export measure
   await expect(page.getByTestId('api-pass')).toHaveText('6');
   await expect(page.getByText('Total scenario time')).toBeVisible();
 });
+for (const locale of ['pl','en']) {
+  for (const width of [390,1280]) {
+    test(`workflow evidence navigation ${locale} ${width}`, async ({page}) => {
+      await page.setViewportSize({width,height:900});
+      await page.goto(locale==='en'?'/en':'/');
+      const section=page.locator('section[aria-labelledby="workflow-expansion-title"]');
+      await expect(section).toBeVisible();
+      await expect(section.locator('a')).toHaveCount(5);
+      for (const file of ['ASSOCIATION.md','BOOKING.md','DELIVERY-RECOVERY.md']) {
+        await expect(section.locator(`a[href$="/${file}"]`)).toBeVisible();
+        await expect(section.locator(`a[href$="/${file}"]`)).toHaveAttribute('href',`https://github.com/Hadezu/operations-desk-reliability/blob/main/docs/${file}`);
+      }
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+    });
+  }
+}

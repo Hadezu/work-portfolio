@@ -1,4 +1,5 @@
 import Hero3D from './Hero3D';
+import WorkflowExpansion from './WorkflowExpansion';
 import {useRef,type PointerEvent} from 'react';
 import {useEditorialMotion} from './useEditorialMotion';
 import {editorialCopy} from './editorial-copy';
@@ -29,6 +30,7 @@ export default function PortfolioHome(){
   </div><figure className="hero-material"><Hero3D/><div className="hero-material-index" aria-hidden="true"><span>01 / {e.source}</span><span>02 / {e.structure}</span><span>03 / {e.verify}</span></div><figcaption>{e.metaphor}</figcaption><div className="motion-control">{motion.available&&<button className="motion-toggle" type="button" onClick={motion.toggle}>{locale==='en'?(motion.paused?'Resume motion':'Pause motion'):(motion.paused?'Wznów ruch':'Wstrzymaj ruch')}</button>}</div></figure></div></section>
   <TaskFit/>
   <BuyerExamples/>
+  <WorkflowExpansion/>
   <section className="section home-start" id={c.ids.work}><div className="shell"><p className="editorial-index">{e.process}</p><h2>{j.start}</h2><ol>{j.steps.map(([title,body])=><li key={title}><h3>{title}</h3><p>{body}</p></li>)}</ol>
    <aside className="home-ai-workflow" aria-labelledby="ai-workflow-title"><div><span className="workflow-tool">Codex</span><h3 id="ai-workflow-title">{workflow.title}</h3></div><div><p>{workflow.body}</p><p>{workflow.checks}</p></div></aside>
    <p className="contact-notice">{j.reviewLimit}</p></div></section>
