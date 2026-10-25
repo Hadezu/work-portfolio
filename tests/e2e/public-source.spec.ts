@@ -22,7 +22,7 @@ for (const locale of ['pl','en']) {
       await page.goto(locale==='en'?'/en':'/');
       const section=page.locator('section[aria-labelledby="workflow-expansion-title"]');
       await expect(section).toBeVisible();
-      await expect(section.locator('a')).toHaveCount(3);
+      await expect(section.locator('a')).toHaveCount(5);
       for (const file of ['ASSOCIATION.md','BOOKING.md','DELIVERY-RECOVERY.md']) {
         await expect(section.locator(`a[href$="/${file}"]`)).toBeVisible();
         await expect(section.locator(`a[href$="/${file}"]`)).toHaveAttribute('href',`https://github.com/Hadezu/operations-desk-reliability/blob/main/docs/${file}`);
